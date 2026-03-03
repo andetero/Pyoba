@@ -113,8 +113,8 @@ const html = `<!DOCTYPE html>
     </div>
     <footer class="footer">
       <div class="footer__logo">py<span>o</span>ba</div>
-      <div class="footer__date">${escape(dateStr)}<span class="entry-num">One True Thing</span></div>
-    </footer>
+      <span class="entry-num"></span>
+  </footer>
   </div>
 </body>
 </html>`;

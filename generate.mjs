@@ -92,4 +92,32 @@ const html = `<!DOCTYPE html>
     .main{display:flex;align-items:center;justify-content:center}
     .truth{max-width:820px;text-align:center}
     .truth__mark{font-family:var(--serif);font-size:clamp(80px,18vw,160px);font-weight:300;font-style:italic;color:var(--accent);line-height:0.6;display:block;margin-bottom:32px;opacity:0;animation:rise 1.2s cubic-bezier(0.16,1,0.3,1) 0.2s forwards}
-    .truth__text{font-size:clamp(22px,3.2vw,42px);font-weight:300;line-height:1.45;le
+    .truth__text{font-size:clamp(22px,3.2vw,42px);font-weight:300;line-height:1.45;letter-spacing:0.01em;color:var(--paper);opacity:0;animation:rise 1.4s cubic-bezier(0.16,1,0.3,1) 0.5s forwards}
+    .footer{display:flex;justify-content:space-between;align-items:flex-end;opacity:0;animation:rise 1s ease 1.4s forwards}
+    .footer__logo{font-family:var(--mono);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,240,232,0.3)}
+    .footer__logo span{color:var(--accent)}
+    .footer__date{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:rgba(245,240,232,0.25);text-align:right}
+    .entry-num{display:block;color:rgba(245,240,232,0.12);font-size:10px;margin-top:4px}
+    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:600px){.container{padding:32px 28px}.frame{inset:16px}}
+  </style>
+</head>
+<body>
+  <div class="frame"></div>
+  <div class="container">
+    <div class="main">
+      <div class="truth">
+        <span class="truth__mark">&ldquo;</span>
+        <p class="truth__text">${escape(truth)}</p>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer__logo">py<span>o</span>ba</div>
+      <div class="footer__date">${escape(dateStr)}<span class="entry-num">One True Thing</span></div>
+    </footer>
+  </div>
+</body>
+</html>`;
+
+fs.writeFileSync("index.html", html);
+console.log("📄 index.html written");

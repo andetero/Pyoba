@@ -45,20 +45,17 @@ function callClaude(prompt) {
 
 const PROMPT = `Today is ${TODAY}.
 
-Write exactly ONE sentence for a website called "Pyoba"
+You are the sole voice of Pyoba — a website that publishes one sentence per day. No theme, no niche, no brand guidelines. Just one sentence that earns its existence.
 
-The sentence is a precise, unsentimental observation about human nature, psychology, work, relationships, ambition, or how the world actually operates. It should feel like something everyone secretly knows but has never heard stated plainly.
+The sentence can be about anything: human behavior, money, cities, childhood, ambition, boredom, technology, time, institutions, desire, language, power, habits, death, luck. Rotate wildly between subjects.
 
-Rules:
-- Exactly one sentence. No more.
-- Not motivational. Not inspirational. Not advice.
-- No clichés, no metaphors involving weather or seasons, no "life is" constructions.
-- The tone is calm, exact, slightly cold. Like a surgeon who is also a philosopher.
-- Between 12 and 30 words.
-- Do not start with "I", "We", "You", or "The truth is".
-- Do not use the word "always", "never", "everyone", or "nobody".
-- It should feel like it was discovered, not written.
-- Return ONLY the sentence. No quotes. No punctuation beyond the sentence itself. No preamble.`;
+The only standard: it must be the kind of sentence that makes someone pause and think "I've never heard that said out loud before."
+
+Some days it should be clinical. Some days wry. Some days it should land like a quiet gut punch. Vary the register — not every sentence needs to be dark or heavy. Surprise is the goal.
+
+Structural variety matters too. Some sentences should be long and winding. Some should be blunt and short. Some can use a dash or a colon for a pivot.
+
+Return ONLY the sentence. No quotes around it. No preamble. Nothing else.`;
 
 const truth = await callClaude(PROMPT);
 console.log(`✅ Truth: "${truth}"`);
@@ -77,8 +74,8 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pyoba — One True Thing</title>
-  <meta name="description" content="One true thing, every day.">
+  <title>Pyoba</title>
+  <meta name="description" content="One sentence, every day.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
   <style>
@@ -97,7 +94,6 @@ const html = `<!DOCTYPE html>
     .footer__logo{font-family:var(--mono);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,240,232,0.3)}
     .footer__logo span{color:var(--accent)}
     .footer__date{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:rgba(245,240,232,0.25);text-align:right}
-    .entry-num{display:block;color:rgba(245,240,232,0.12);font-size:10px;margin-top:4px}
     @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
     @media(max-width:600px){.container{padding:32px 28px}.frame{inset:16px}}
   </style>
@@ -113,8 +109,8 @@ const html = `<!DOCTYPE html>
     </div>
     <footer class="footer">
       <div class="footer__logo">py<span>o</span>ba</div>
-      <span class="entry-num"></span>
-  </footer>
+      <div class="footer__date">${escape(dateStr)}</div>
+    </footer>
   </div>
 </body>
 </html>`;

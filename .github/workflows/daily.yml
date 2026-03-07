@@ -21,9 +21,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Copy template
-        run: cp index.html index.template.html
-
       - name: Generate today's puzzle
         run: node generate.mjs
         env:

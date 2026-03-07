@@ -4,6 +4,11 @@ import fs from "fs";
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 if (!ANTHROPIC_API_KEY) { console.error("❌ No API key"); process.exit(1); }
 
+// Puzzle number: days since launch (March 6, 2026)
+const LAUNCH = new Date("2026-03-06T00:00:00-06:00");
+const NOW = new Date();
+const PUZZLE_ID = Math.floor((NOW - LAUNCH) / (1000 * 60 * 60 * 24)) + 1;
+
 const TODAY = new Date().toLocaleDateString("en-US", {
   weekday: "long", year: "numeric", month: "long", day: "numeric",
   timeZone: "America/Chicago",
@@ -13,7 +18,7 @@ function callClaude(prompt) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
       model: "claude-sonnet-4-20250514",
-      max_tokens: 300,
+      max_tokens: 1000,
       messages: [{ role: "user", content: prompt }],
     });
     const req = https.request({
@@ -43,77 +48,55 @@ function callClaude(prompt) {
   });
 }
 
-const PROMPT = `Today is ${TODAY}.
+const PROMPT = `Today is ${TODAY}. You are generating puzzle #${PUZZLE_ID} for GIST, a daily word game.
 
-You are the sole voice of Pyoba — a website that publishes one sentence per day. No theme, no niche, no brand guidelines. Just one sentence that earns its existence.
+In GIST, a paragraph is hidden. Players guess the ONE WORD that captures its essence. Each wrong guess reveals one more sentence of the paragraph as a clue. There are 5 sentences total, revealed one by one.
 
-The sentence can be about anything: human behavior, money, cities, childhood, ambition, boredom, technology, time, institutions, desire, language, power, habits, death, luck. Rotate wildly between subjects.
+Your job: create a puzzle. Choose a concept, emotion, phenomenon, or idea as the answer word. Write a 5-sentence paragraph that describes it without ever saying the word. The paragraph should be beautifully written — like an encyclopedia crossed with a prose poem.
 
-The only standard: it must be the kind of sentence that makes someone pause and think "I've never heard that said out loud before."
+Rules:
+- The answer must be a single common English word (not a proper noun, not a phrase)
+- The paragraph must NOT contain the answer word or obvious synonyms
+- Sentence 1 should be the hardest clue (most abstract/indirect)
+- Sentence 5 should be the most revealing (someone could guess from it alone)
+- The paragraph should feel like elegant, precise writing — not a riddle
+- Pick varied topics across different domains: emotions, social phenomena, physical experiences, abstract concepts, human behaviors, etc.
+- Also provide 3-5 "close" words that are near-synonyms (a player guessing these gets a yellow result)
 
-Some days it should be clinical. Some days wry. Some days it should land like a quiet gut punch. Vary the register — not every sentence needs to be dark or heavy. Surprise is the goal.
+Return ONLY valid JSON, no markdown, exactly this format:
+{
+  "answer": "loneliness",
+  "sentences": [
+    "It can exist in the middle of a crowd, invisible to everyone including the person experiencing it.",
+    "Philosophers have argued it is the fundamental condition of consciousness — the irreducible gap between any two minds.",
+    "Children rarely feel it; the capacity seems to develop alongside self-awareness.",
+    "It is distinct from solitude, which is chosen, and from isolation, which is imposed.",
+    "The word comes from 'lone' — the state of being the only one of its kind in a particular place."
+  ],
+  "close": ["isolation", "solitude", "alienation", "emptiness"]
+}`;
 
-Structural variety matters too. Some sentences should be long and winding. Some should be blunt and short. Some can use a dash or a colon for a pivot.
+console.log(`🧩 Generating GIST puzzle #${PUZZLE_ID}...`);
+const raw = await callClaude(PROMPT);
 
-Return ONLY the sentence. No quotes around it. No preamble. Nothing else.`;
-
-const truth = await callClaude(PROMPT);
-console.log(`✅ Truth: "${truth}"`);
-
-function escape(str) {
-  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
-            .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+let puzzle;
+try {
+  puzzle = JSON.parse(raw.replace(/```json|```/g, "").trim());
+} catch(e) {
+  console.error("❌ Failed to parse puzzle JSON:", raw);
+  process.exit(1);
 }
 
-const dateStr = new Date().toLocaleDateString("en-US", {
-  month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago"
-});
+puzzle.id = PUZZLE_ID;
+console.log(`✅ Answer: "${puzzle.answer}"`);
+console.log(`📝 Sentences: ${puzzle.sentences.length}`);
 
-const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pyoba</title>
-  <meta name="description" content="One sentence, every day.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--ink:#0a0a0a;--paper:#f5f0e8;--accent:#8b0000;--mono:'Courier Prime',monospace;--serif:'Cormorant Garamond',Georgia,serif}
-    html,body{height:100%;background:var(--ink);color:var(--paper);font-family:var(--serif);overflow:hidden}
-    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.6}
-    body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.55) 100%);pointer-events:none;z-index:0}
-    .frame{position:fixed;inset:28px;border:1px solid rgba(245,240,232,0.08);pointer-events:none;z-index:2}
-    .container{position:relative;z-index:1;height:100vh;display:grid;grid-template-rows:1fr auto;padding:52px 64px}
-    .main{display:flex;align-items:center;justify-content:center}
-    .truth{max-width:820px;text-align:center}
-    .truth__mark{font-family:var(--serif);font-size:clamp(80px,18vw,160px);font-weight:300;font-style:italic;color:var(--accent);line-height:0.6;display:block;margin-bottom:32px;opacity:0;animation:rise 1.2s cubic-bezier(0.16,1,0.3,1) 0.2s forwards}
-    .truth__text{font-size:clamp(22px,3.2vw,42px);font-weight:300;line-height:1.45;letter-spacing:0.01em;color:var(--paper);opacity:0;animation:rise 1.4s cubic-bezier(0.16,1,0.3,1) 0.5s forwards}
-    .footer{display:flex;justify-content:space-between;align-items:flex-end;opacity:0;animation:rise 1s ease 1.4s forwards}
-    .footer__logo{font-family:var(--mono);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,240,232,0.3)}
-    .footer__logo span{color:var(--accent)}
-    .footer__date{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:rgba(245,240,232,0.25);text-align:right}
-    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    @media(max-width:600px){.container{padding:32px 28px}.frame{inset:16px}}
-  </style>
-</head>
-<body>
-  <div class="frame"></div>
-  <div class="container">
-    <div class="main">
-      <div class="truth">
-        <span class="truth__mark">&ldquo;</span>
-        <p class="truth__text">${escape(truth)}</p>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="footer__logo">py<span>o</span>ba</div>
-      <div class="footer__date">${escape(dateStr)}</div>
-    </footer>
-  </div>
-</body>
-</html>`;
+// Read template and inject puzzle data
+const template = fs.readFileSync("index.template.html", "utf8");
+const output = template.replace(
+  "__PUZZLE_DATA__",
+  JSON.stringify(puzzle)
+);
 
-fs.writeFileSync("index.html", html);
-console.log("📄 index.html written");
+fs.writeFileSync("index.html", output);
+console.log(`📄 index.html written for puzzle #${PUZZLE_ID}`);

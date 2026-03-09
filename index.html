@@ -41,14 +41,7 @@
       }
     }
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--sans);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); min-height: 100vh; display: flex; flex-direction: column; }
 
     body::before {
       content: '';
@@ -59,425 +52,127 @@
       z-index: 0;
     }
 
-    .wrap {
-      position: relative;
-      z-index: 1;
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+    .wrap { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 24px; width: 100%; flex: 1; display: flex; flex-direction: column; }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 0 20px;
-      border-bottom: 1px solid var(--faint);
-    }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 20px; border-bottom: 1px solid var(--faint); }
 
-    .logo {
-      font-family: var(--mono);
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      color: var(--ink);
-    }
-
+    .logo { font-family: var(--mono); font-size: 22px; font-weight: 400; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; }
     .logo em { color: var(--gold); font-style: normal; }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+    .header-right { display: flex; align-items: center; gap: 16px; }
 
-    .puzzle-num {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--mid);
-      letter-spacing: 0.1em;
-    }
+    .puzzle-num { font-family: var(--mono); font-size: 11px; color: var(--mid); letter-spacing: 0.1em; }
 
-    .btn-how {
-      background: none;
-      border: 1px solid var(--faint);
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      font-size: 13px;
-      color: var(--mid);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.15s;
-    }
-    .btn-how:hover { border-color: var(--ink); color: var(--ink); }
+    .btn-icon { background: none; border: 1px solid var(--faint); border-radius: 50%; width: 28px; height: 28px; font-size: 13px; color: var(--mid); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; text-decoration: none; }
+    .btn-icon:hover { border-color: var(--ink); color: var(--ink); }
 
-    .clue-section {
-      padding: 32px 0 24px;
-      flex: 1;
-    }
+    .clue-section { padding: 32px 0 24px; flex: 1; }
 
-    .clue-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 16px;
-    }
+    .clue-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
 
-    .clues {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
+    .clues { display: flex; flex-direction: column; }
 
-    .clue {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--faint);
-      font-family: var(--serif);
-      font-size: 17px;
-      line-height: 1.6;
-      color: var(--ink);
-      opacity: 0;
-      transform: translateY(8px);
-      animation: fadeUp 0.5s ease forwards;
-    }
-
+    .clue { padding: 14px 0; border-bottom: 1px solid var(--faint); font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--ink); opacity: 0; transform: translateY(8px); animation: fadeUp 0.5s ease forwards; }
     .clue:first-child { border-top: 1px solid var(--faint); }
 
-    .clue-num {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--mid);
-      margin-bottom: 4px;
-      letter-spacing: 0.1em;
-    }
+    .clue-num { font-family: var(--mono); font-size: 10px; color: var(--mid); margin-bottom: 4px; letter-spacing: 0.1em; }
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .locked-clues {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
+    .locked-clues { display: flex; flex-direction: column; }
 
-    .clue-locked {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--faint);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .clue-locked { padding: 14px 0; border-bottom: 1px solid var(--faint); display: flex; align-items: center; gap: 10px; }
     .clue-locked:first-child { border-top: 1px solid var(--faint); }
+    .clue-locked-bar { height: 10px; border-radius: 2px; background: var(--faint); }
 
-    .clue-locked-bar {
-      height: 10px;
-      border-radius: 2px;
-      background: var(--faint);
-    }
+    .guesses { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 
-    .guesses {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .guess-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-family: var(--mono);
-      font-size: 14px;
-      animation: fadeUp 0.3s ease forwards;
-      opacity: 0;
-    }
-
-    .guess-row.wrong {
-      background: var(--wrong-bg);
-      color: var(--wrong);
-      border: 1px solid var(--wrong-bg);
-    }
-
-    .guess-row.close {
-      background: var(--gold-bg);
-      color: var(--gold);
-      border: 1px solid var(--gold-bg);
-    }
-
-    .guess-row.correct {
-      background: var(--reveal-bg);
-      color: var(--reveal);
-      border: 1px solid var(--reveal-bg);
-    }
+    .guess-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 6px; font-family: var(--mono); font-size: 14px; animation: fadeUp 0.3s ease forwards; opacity: 0; }
+    .guess-row.wrong { background: var(--wrong-bg); color: var(--wrong); }
+    .guess-row.close { background: var(--gold-bg); color: var(--gold); }
+    .guess-row.correct { background: var(--reveal-bg); color: var(--reveal); }
 
     .guess-icon { font-size: 16px; }
     .guess-word { flex: 1; letter-spacing: 0.05em; }
     .guess-hint { font-size: 11px; opacity: 0.7; }
 
-    .input-section {
-      padding: 20px 0 32px;
-      border-top: 1px solid var(--faint);
-    }
+    .input-section { padding: 20px 0 32px; border-top: 1px solid var(--faint); }
 
-    .guess-counter {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--mid);
-      margin-bottom: 12px;
-      letter-spacing: 0.1em;
-    }
+    .guess-counter { font-family: var(--mono); font-size: 11px; color: var(--mid); margin-bottom: 12px; letter-spacing: 0.1em; }
 
-    .input-row {
-      display: flex;
-      gap: 10px;
-    }
+    .input-row { display: flex; gap: 10px; }
 
-    .guess-input {
-      flex: 1;
-      background: var(--bg);
-      border: 1.5px solid var(--faint);
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-family: var(--serif);
-      font-size: 18px;
-      color: var(--ink);
-      outline: none;
-      transition: border-color 0.15s;
-      letter-spacing: 0.02em;
-    }
-
+    .guess-input { flex: 1; background: var(--bg); border: 1.5px solid var(--faint); border-radius: 8px; padding: 12px 16px; font-family: var(--serif); font-size: 18px; color: var(--ink); outline: none; transition: border-color 0.15s; }
     .guess-input:focus { border-color: var(--ink); }
     .guess-input::placeholder { color: var(--mid); font-style: italic; }
-    .guess-input:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .btn-guess {
-      background: var(--ink);
-      color: var(--bg);
-      border: none;
-      border-radius: 8px;
-      padding: 12px 24px;
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-
+    .btn-guess { background: var(--ink); color: var(--bg); border: none; border-radius: 8px; padding: 12px 24px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
     .btn-guess:hover { opacity: 0.85; }
-    .btn-guess:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .shake { animation: shake 0.4s ease; }
-    @keyframes shake {
-      0%,100%{transform:translateX(0)}
-      20%{transform:translateX(-6px)}
-      40%{transform:translateX(6px)}
-      60%{transform:translateX(-4px)}
-      80%{transform:translateX(4px)}
-    }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
 
-    .end-card {
-      background: var(--faint);
-      border: 1px solid var(--faint);
-      border-radius: 12px;
-      padding: 28px;
-      margin-bottom: 24px;
-      text-align: center;
-      animation: fadeUp 0.5s ease forwards;
-      opacity: 0;
-    }
+    .end-card { background: var(--faint); border-radius: 12px; padding: 28px; margin-bottom: 24px; text-align: center; animation: fadeUp 0.5s ease forwards; opacity: 0; }
+    .end-emoji { font-size: 40px; margin-bottom: 12px; }
+    .end-title { font-family: var(--serif); font-size: 22px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
+    .end-answer { font-family: var(--mono); font-size: 13px; color: var(--mid); margin-bottom: 16px; letter-spacing: 0.1em; }
+    .end-answer span { font-size: 16px; color: var(--ink); }
 
-    .end-card .end-emoji { font-size: 40px; margin-bottom: 12px; }
-    .end-card .end-title {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-    .end-card .end-answer {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--mid);
-      margin-bottom: 16px;
-      letter-spacing: 0.1em;
-    }
-    .end-card .end-answer span {
-      font-size: 16px;
-      color: var(--ink);
-      font-weight: 400;
-    }
+    .community-stats { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; padding: 14px 0; border-top: 1px solid var(--mid); border-bottom: 1px solid var(--mid); }
+    .stat { text-align: center; }
+    .stat-value { font-family: var(--mono); font-size: 22px; color: var(--ink); }
+    .stat-label { font-family: var(--mono); font-size: 10px; color: var(--mid); letter-spacing: 0.1em; margin-top: 2px; }
 
-    .share-text {
-      background: var(--bg);
-      border: 1px solid var(--faint);
-      border-radius: 6px;
-      padding: 12px 16px;
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--ink);
-      margin-bottom: 16px;
-      line-height: 1.8;
-      letter-spacing: 0.05em;
-      white-space: pre-line;
-      text-align: left;
-    }
+    .share-text { background: var(--bg); border: 1px solid var(--faint); border-radius: 6px; padding: 12px 16px; font-family: var(--mono); font-size: 13px; color: var(--ink); margin-bottom: 16px; line-height: 1.8; white-space: pre-line; text-align: left; }
 
-    .btn-share {
-      background: var(--ink);
-      color: var(--bg);
-      border: none;
-      border-radius: 8px;
-      padding: 12px 28px;
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      transition: all 0.15s;
-      width: 100%;
-    }
+    .end-buttons { display: flex; gap: 10px; }
+
+    .btn-share { background: var(--ink); color: var(--bg); border: none; border-radius: 8px; padding: 12px 28px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; cursor: pointer; transition: all 0.15s; flex: 1; }
     .btn-share:hover { opacity: 0.85; }
     .btn-share.copied { background: var(--reveal); }
 
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
+    .btn-archive { background: none; color: var(--ink); border: 1.5px solid var(--faint); border-radius: 8px; padding: 12px 20px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s; }
+    .btn-archive:hover { border-color: var(--ink); }
+
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
 
-    .modal {
-      background: var(--bg);
-      border-radius: 16px;
-      padding: 32px;
-      max-width: 440px;
-      width: 100%;
-      transform: translateY(12px);
-      transition: transform 0.2s;
-    }
+    .modal { background: var(--bg); border-radius: 16px; padding: 32px; max-width: 440px; width: 100%; transform: translateY(12px); transition: transform 0.2s; }
     .modal-overlay.open .modal { transform: translateY(0); }
 
-    .modal h2 {
-      font-family: var(--serif);
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: var(--ink);
-    }
-
-    .modal p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--mid);
-      margin-bottom: 14px;
-    }
-
+    .modal h2 { font-family: var(--serif); font-size: 24px; margin-bottom: 20px; color: var(--ink); }
+    .modal p { font-size: 15px; line-height: 1.7; color: var(--mid); margin-bottom: 14px; }
     .modal p strong { color: var(--ink); }
 
-    .modal .example {
-      background: var(--faint);
-      border: 1px solid var(--faint);
-      border-radius: 8px;
-      padding: 14px 16px;
-      font-family: var(--mono);
-      font-size: 12px;
-      margin-bottom: 20px;
-      line-height: 2;
-    }
-
+    .modal .example { background: var(--faint); border-radius: 8px; padding: 14px 16px; font-family: var(--mono); font-size: 12px; margin-bottom: 20px; line-height: 2; }
     .modal .example .w { color: var(--wrong); }
     .modal .example .c { color: var(--gold); }
     .modal .example .r { color: var(--reveal); }
 
-    .btn-close {
-      background: var(--ink);
-      color: var(--bg);
-      border: none;
-      border-radius: 8px;
-      padding: 12px 28px;
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      width: 100%;
-    }
+    .btn-close { background: var(--ink); color: var(--bg); border: none; border-radius: 8px; padding: 12px 28px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; cursor: pointer; width: 100%; }
 
-    .loading {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 16px;
-    }
-
+    .loading { flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
     .loading-dots { display: flex; gap: 6px; }
-
-    .loading-dots span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--mid);
-      animation: pulse 1.2s ease-in-out infinite;
-    }
+    .loading-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--mid); animation: pulse 1.2s ease-in-out infinite; }
     .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
     .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse { 0%,80%,100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+    .loading p { font-family: var(--mono); font-size: 12px; color: var(--mid); letter-spacing: 0.1em; }
 
-    @keyframes pulse {
-      0%,80%,100% { transform: scale(0.6); opacity: 0.4; }
-      40% { transform: scale(1); opacity: 1; }
-    }
+    footer { text-align: center; padding: 16px 0 24px; font-family: var(--mono); font-size: 10px; color: var(--mid); letter-spacing: 0.1em; border-top: 1px solid var(--faint); }
 
-    .loading p {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--mid);
-      letter-spacing: 0.1em;
-    }
-
-    footer {
-      text-align: center;
-      padding: 16px 0 24px;
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--mid);
-      letter-spacing: 0.1em;
-      border-top: 1px solid var(--faint);
-    }
-
-    @media (max-width: 480px) {
-      .clue { font-size: 15px; }
-      .guess-input { font-size: 16px; }
-    }
+    @media (max-width: 480px) { .clue { font-size: 15px; } .guess-input { font-size: 16px; } }
   </style>
 </head>
 <body>
 
 <div class="wrap">
   <header>
-    <div class="logo">G<em>I</em>ST</div>
+    <a href="/" class="logo">G<em>I</em>ST</a>
     <div class="header-right">
       <span class="puzzle-num" id="puzzle-num"></span>
-      <button class="btn-how" onclick="openModal()">?</button>
+      <a href="/archive.html" class="btn-icon" title="Archive">☰</a>
+      <button class="btn-icon" onclick="openModal()">?</button>
     </div>
   </header>
 
@@ -507,8 +202,10 @@
 </div>
 
 <script>
-const PUZZLE = {"answer":"memory","sentences":["It is the ghost that inhabits every present moment, shaping what we see without ever being seen itself.","Neuroscientists know it is not a recording but a reconstruction, edited each time it surfaces.","It can be triggered by a scent drifting through air, a melody half-heard, the quality of light at a certain hour.","Without it, we would wake each day as strangers to ourselves, unable to recognize our own faces.","It is what we lose piece by piece with age, and what we desperately try to preserve in photographs and journals."],"close":["recollection","remembrance","recall","nostalgia"],"id":4};
+const SUPABASE_URL = 'https://ctrwrryyypxfeaggwuzh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_5cLkMj-rmHw-AMmCd2rB4Q_Tf2ChS2v';
 
+const PUZZLE = {"answer":"memory","sentences":["It transforms with each act of retrieval, becoming less faithful to its origin while growing more essential to identity.","Neuroscientists describe it as a distributed symphony, with no single conductor but countless instruments playing across the brain's vast orchestra.","Time both strengthens and weakens it — recent events fade while distant moments crystallize into permanent fixtures of the mind.","It can be triggered by a scent, a melody, or the quality of afternoon light, flooding consciousness with scenes from years past.","Without it, each morning would bring a stranger in the mirror, and every face would be meeting you for the first time."],"close":["recollection","remembrance","recall","reminiscence"],"id":4};
 const STORAGE_KEY = `gist-${PUZZLE.id}`;
 
 let state = loadState();
@@ -518,16 +215,49 @@ function loadState() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return JSON.parse(saved);
   } catch(e) {}
-  return { guesses: [], won: false, lost: false, revealedCount: 1 };
+  return { guesses: [], won: false, lost: false, revealedCount: 1, submitted: false };
 }
 
 function saveState() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
 }
 
-function render() {
-  document.getElementById('puzzle-num').textContent = `#${PUZZLE.id}`;
+async function submitScore(guesses, won) {
+  if (state.submitted) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/scores`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ puzzle_id: PUZZLE.id, guesses, won })
+    });
+    state.submitted = true;
+    saveState();
+  } catch(e) {}
+}
 
+async function fetchCommunityStats() {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/scores?puzzle_id=eq.${PUZZLE.id}&select=guesses,won`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+    );
+    const data = await res.json();
+    if (!data.length) return null;
+    const total = data.length;
+    const wins = data.filter(r => r.won).length;
+    const avgGuesses = (data.reduce((s, r) => s + r.guesses, 0) / total).toFixed(1);
+    const solveRate = Math.round((wins / total) * 100);
+    return { total, solveRate, avgGuesses };
+  } catch(e) { return null; }
+}
+
+async function render() {
+  document.getElementById('puzzle-num').textContent = `#${PUZZLE.id}`;
   const app = document.getElementById('app');
   const guessesLeft = 5 - state.guesses.length;
   const revealedSentences = PUZZLE.sentences.slice(0, state.revealedCount);
@@ -537,107 +267,92 @@ function render() {
 
   if (state.won || state.lost) {
     const score = state.won ? state.guesses.length : 'X';
-    const emoji = state.won
-      ? ['🧠','🔥','✨','💡','🎯'][Math.min(state.guesses.length - 1, 4)]
-      : '😔';
-
-    const squares = state.guesses.map(g => {
-      if (g.result === 'correct') return '🟩';
-      if (g.result === 'close') return '🟨';
-      return '🟥';
-    }).join('');
-
+    const emoji = state.won ? ['🧠','🔥','✨','💡','🎯'][Math.min(state.guesses.length - 1, 4)] : '😔';
+    const squares = state.guesses.map(g => g.result === 'correct' ? '🟩' : g.result === 'close' ? '🟨' : '🟥').join('');
     const shareStr = `GIST #${PUZZLE.id} ${score}/5\n${squares}\npyoba.com`;
+    const stats = await fetchCommunityStats();
+    const statsHTML = stats ? `
+      <div class="community-stats">
+        <div class="stat"><div class="stat-value">${stats.total}</div><div class="stat-label">PLAYED</div></div>
+        <div class="stat"><div class="stat-value">${stats.solveRate}%</div><div class="stat-label">SOLVED</div></div>
+        <div class="stat"><div class="stat-value">${stats.avgGuesses}</div><div class="stat-label">AVG GUESSES</div></div>
+      </div>` : '';
 
-    html += `
-      <div class="end-card">
-        <div class="end-emoji">${emoji}</div>
-        <div class="end-title">${state.won ? 'You got the GIST' : 'Not quite'}</div>
-        <div class="end-answer">The answer was <span>${PUZZLE.answer.toUpperCase()}</span></div>
-        <div class="share-text" id="share-text">${shareStr}</div>
+    html += `<div class="end-card">
+      <div class="end-emoji">${emoji}</div>
+      <div class="end-title">${state.won ? 'You got the GIST' : 'Not quite'}</div>
+      <div class="end-answer">The answer was <span>${PUZZLE.answer.toUpperCase()}</span></div>
+      ${statsHTML}
+      <div class="share-text" id="share-text">${shareStr}</div>
+      <div class="end-buttons">
         <button class="btn-share" id="btn-share" onclick="copyShare()">COPY & SHARE</button>
-      </div>`;
+        <a href="/archive.html" class="btn-archive">ARCHIVE</a>
+      </div>
+    </div>`;
   }
 
-  html += `<div class="clue-section">`;
-  html += `<div class="clue-label">CLUE${revealedSentences.length > 1 ? 'S' : ''} REVEALED — ${revealedSentences.length} of ${PUZZLE.sentences.length}</div>`;
-  html += `<div class="clues">`;
+  html += `<div class="clue-section">
+    <div class="clue-label">CLUE${revealedSentences.length > 1 ? 'S' : ''} REVEALED — ${revealedSentences.length} of ${PUZZLE.sentences.length}</div>
+    <div class="clues">`;
   revealedSentences.forEach((s, i) => {
-    html += `<div class="clue" style="animation-delay:${i * 0.08}s">
-      <div class="clue-num">— ${i + 1}</div>
-      ${s}
-    </div>`;
+    html += `<div class="clue" style="animation-delay:${i * 0.08}s"><div class="clue-num">— ${i + 1}</div>${s}</div>`;
   });
   html += `</div>`;
 
   if (lockedCount > 0 && !state.won && !state.lost) {
-    html += `<div class="locked-clues" style="margin-top:0">`;
+    html += `<div class="locked-clues">`;
     for (let i = 0; i < lockedCount; i++) {
-      const w = 40 + Math.random() * 40;
-      const w2 = 20 + Math.random() * 30;
       html += `<div class="clue-locked">
-        <div class="clue-locked-bar" style="width:${w}%;"></div>
-        <div class="clue-locked-bar" style="width:${w2}%;"></div>
+        <div class="clue-locked-bar" style="width:${40 + Math.random() * 40}%"></div>
+        <div class="clue-locked-bar" style="width:${20 + Math.random() * 30}%"></div>
       </div>`;
     }
     html += `</div>`;
   }
-
   html += `</div>`;
 
   if (state.guesses.length > 0) {
     html += `<div class="guesses">`;
-    state.guesses.forEach((g) => {
+    state.guesses.forEach(g => {
       const icon = g.result === 'correct' ? '✓' : g.result === 'close' ? '~' : '✗';
-      const hint = g.result === 'close' ? 'close...' : '';
       html += `<div class="guess-row ${g.result}" style="animation-delay:0s">
         <span class="guess-icon">${icon}</span>
         <span class="guess-word">${g.word}</span>
-        <span class="guess-hint">${hint}</span>
+        <span class="guess-hint">${g.result === 'close' ? 'close...' : ''}</span>
       </div>`;
     });
     html += `</div>`;
   }
 
   if (!state.won && !state.lost) {
-    html += `
-      <div class="input-section">
-        <div class="guess-counter">${guessesLeft} GUESS${guessesLeft !== 1 ? 'ES' : ''} REMAINING</div>
-        <div class="input-row">
-          <input type="text" class="guess-input" id="guess-input"
-            placeholder="your one word..."
-            maxlength="30"
-            autocomplete="off"
-            autocorrect="off"
-            spellcheck="false"
-            onkeydown="handleKey(event)">
-          <button class="btn-guess" onclick="submitGuess()">GUESS</button>
-        </div>
-      </div>`;
+    html += `<div class="input-section">
+      <div class="guess-counter">${guessesLeft} GUESS${guessesLeft !== 1 ? 'ES' : ''} REMAINING</div>
+      <div class="input-row">
+        <input type="text" class="guess-input" id="guess-input"
+          placeholder="your one word..." maxlength="30"
+          autocomplete="off" autocorrect="off" spellcheck="false"
+          onkeydown="handleKey(event)">
+        <button class="btn-guess" onclick="submitGuess()">GUESS</button>
+      </div>
+    </div>`;
   }
 
   app.innerHTML = html;
-
-  if (!state.won && !state.lost) {
-    document.getElementById('guess-input')?.focus();
-  }
+  if (!state.won && !state.lost) document.getElementById('guess-input')?.focus();
 }
 
-function normalize(word) {
-  return word.trim().toLowerCase().replace(/[^a-z]/g, '');
-}
+function normalize(w) { return w.trim().toLowerCase().replace(/[^a-z]/g, ''); }
 
 function checkGuess(word) {
   const w = normalize(word);
-  const answer = normalize(PUZZLE.answer);
-  if (w === answer) return 'correct';
-  const close = (PUZZLE.close || []).map(normalize);
-  if (close.includes(w)) return 'close';
-  if (answer.startsWith(w) || w.startsWith(answer)) return 'close';
+  const a = normalize(PUZZLE.answer);
+  if (w === a) return 'correct';
+  if ((PUZZLE.close || []).map(normalize).includes(w)) return 'close';
+  if (a.startsWith(w) || w.startsWith(a)) return 'close';
   return 'wrong';
 }
 
-function submitGuess() {
+async function submitGuess() {
   const input = document.getElementById('guess-input');
   if (!input) return;
   const word = input.value.trim();
@@ -646,11 +361,8 @@ function submitGuess() {
   const result = checkGuess(word);
   state.guesses.push({ word, result });
 
-  if (result === 'correct') {
-    state.won = true;
-  } else if (result === 'wrong') {
-    if (state.revealedCount < PUZZLE.sentences.length) state.revealedCount++;
-  }
+  if (result === 'correct') state.won = true;
+  else if (result === 'wrong' && state.revealedCount < PUZZLE.sentences.length) state.revealedCount++;
 
   if (!state.won && state.guesses.length >= 5) {
     state.lost = true;
@@ -658,9 +370,10 @@ function submitGuess() {
   }
 
   saveState();
-  render();
+  if (state.won || state.lost) submitScore(state.guesses.length, state.won);
+  await render();
 
-  if (result === 'wrong' || result === 'close') {
+  if (result !== 'correct') {
     setTimeout(() => {
       const inp = document.getElementById('guess-input');
       if (inp) { inp.classList.add('shake'); setTimeout(() => inp.classList.remove('shake'), 400); }
@@ -668,9 +381,7 @@ function submitGuess() {
   }
 }
 
-function handleKey(e) {
-  if (e.key === 'Enter') submitGuess();
-}
+function handleKey(e) { if (e.key === 'Enter') submitGuess(); }
 
 function copyShare() {
   const text = document.getElementById('share-text').textContent;
@@ -684,9 +395,7 @@ function copyShare() {
 
 function openModal() { document.getElementById('modal').classList.add('open'); }
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('modal')) closeModal();
-}
+function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
 
 render();
 </script>

@@ -209,7 +209,19 @@ const PUZZLE = __PUZZLE_DATA__;
 const STORAGE_KEY = `gist-${PUZZLE.id}`;
 
 let state = loadState();
-
+  
+// Save puzzle metadata for archive
+try {
+  const meta = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  if (!meta.answer) {
+    const existing = loadState();
+    existing.answer = PUZZLE.answer;
+    existing.sentences = PUZZLE.sentences;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    state = existing;
+  }
+} catch(e) {}
+  
 function loadState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);

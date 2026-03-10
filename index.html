@@ -205,11 +205,23 @@
 const SUPABASE_URL = 'https://ctrwrryyypxfeaggwuzh.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_5cLkMj-rmHw-AMmCd2rB4Q_Tf2ChS2v';
 
-const PUZZLE = {"answer":"memory","sentences":["It transforms with each act of retrieval, becoming less faithful to its origin while growing more essential to identity.","Neuroscientists describe it as a distributed symphony, with no single conductor but countless instruments playing across the brain's vast orchestra.","Time both strengthens and weakens it — recent events fade while distant moments crystallize into permanent fixtures of the mind.","It can be triggered by a scent, a melody, or the quality of afternoon light, flooding consciousness with scenes from years past.","Without it, each morning would bring a stranger in the mirror, and every face would be meeting you for the first time."],"close":["recollection","remembrance","recall","reminiscence"],"id":4};
+const PUZZLE = {"answer":"hunger","difficulty":"EASY","sentences":["It begins as a whisper in the body's deepest chambers, a gentle emptiness that slowly grows more insistent.","The stomach contracts and releases, sending signals upward like smoke from a dying fire.","Time stretches differently when this feeling takes hold, making minutes feel like hours.","It can make the simplest foods seem like treasures, transforming ordinary bread into something precious.","The rumbling grows louder until finally satisfied by the first bite, the body's ancient call for nourishment answered."],"close":["appetite","craving","starvation","emptiness","yearning"],"id":4};
 const STORAGE_KEY = `gist-${PUZZLE.id}`;
 
 let state = loadState();
-
+  
+// Save puzzle metadata for archive
+try {
+  const meta = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  if (!meta.answer) {
+    const existing = loadState();
+    existing.answer = PUZZLE.answer;
+    existing.sentences = PUZZLE.sentences;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    state = existing;
+  }
+} catch(e) {}
+  
 function loadState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -257,8 +269,7 @@ async function fetchCommunityStats() {
 }
 
 async function render() {
-  document.getElementById('puzzle-num').textContent = `#${PUZZLE.id}`;
-  const app = document.getElementById('app');
+document.getElementById('puzzle-num').textContent = PUZZLE.difficulty ? `#${PUZZLE.id} · ${PUZZLE.difficulty}` : `#${PUZZLE.id}`;  const app = document.getElementById('app');
   const guessesLeft = 5 - state.guesses.length;
   const revealedSentences = PUZZLE.sentences.slice(0, state.revealedCount);
   const lockedCount = PUZZLE.sentences.length - state.revealedCount;

@@ -14,6 +14,68 @@ const TODAY = new Date().toLocaleDateString("en-US", {
   timeZone: "America/Chicago",
 });
 
+// Day of week in CST (0 = Sunday, 1 = Monday ... 6 = Saturday)
+const DOW = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })).getDay();
+
+// Difficulty ramp: Mon=easy, Tue=easy-medium, Wed=medium, Thu=medium-hard, Fri=hard, Sat=hard, Sun=wildcard
+const DIFFICULTY_MAP = {
+  0: { label: "WILDCARD", level: "wildcard" },
+  1: { label: "EASY",     level: "easy" },
+  2: { label: "EASY",     level: "easy-medium" },
+  3: { label: "MEDIUM",   level: "medium" },
+  4: { label: "MEDIUM",   level: "medium-hard" },
+  5: { label: "HARD",     level: "hard" },
+  6: { label: "HARD",     level: "hard" },
+};
+
+const DIFFICULTY = DIFFICULTY_MAP[DOW];
+
+const DIFFICULTY_INSTRUCTIONS = {
+  "easy": `
+DIFFICULTY: EASY
+- The answer word should be concrete, universally familiar, and immediately relatable
+- Examples of appropriate answer words: sleep, laughter, hunger, embarrassment, boredom, jealousy
+- The paragraph clues should be warm and accessible — someone should get it in 1-2 guesses
+- Sentence 1 can still be poetic but should not be impenetrable
+- Avoid obscure vocabulary in the clues`,
+
+  "easy-medium": `
+DIFFICULTY: EASY-MEDIUM
+- The answer word should be familiar but slightly more conceptual
+- Examples: nostalgia, ambition, habit, coincidence, forgiveness, procrastination
+- Most people should get it within 3 guesses
+- Sentence 1 should be indirect but sentence 3 should make it fairly clear`,
+
+  "medium": `
+DIFFICULTY: MEDIUM
+- The answer word should be a real but somewhat abstract concept
+- Examples: irony, momentum, entropy, threshold, compromise, reputation
+- A thoughtful person should get it in 3-4 guesses
+- The clues should require genuine lateral thinking`,
+
+  "medium-hard": `
+DIFFICULTY: MEDIUM-HARD
+- The answer word should be abstract or nuanced — something people know but rarely name
+- Examples: cognitive dissonance, complicity, catharsis, schadenfreude, paradox, inertia
+- Most players will need 4-5 clues
+- Sentence 1 should be genuinely cryptic`,
+
+  "hard": `
+DIFFICULTY: HARD
+- The answer word should be philosophical, rare, or highly abstract
+- Examples: liminality, solipsism, entropy, aporia, sublimation, alienation, reification
+- Many players will not get it at all
+- All 5 clues together should make it clear in retrospect, but sentence 1 alone should be nearly impossible
+- The word can be from philosophy, psychology, physics, linguistics, or sociology`,
+
+  "wildcard": `
+DIFFICULTY: WILDCARD (Sunday)
+- Surprise us. Pick any difficulty level you want — could be easy, could be brutally hard
+- The topic should be unexpected and unlike anything from a typical weekday
+- Consider unusual domains: architecture, cooking, mathematics, music theory, geology, linguistics
+- Make it memorable`,
+};
+
 function callClaude(prompt) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
@@ -52,20 +114,22 @@ const PROMPT = `Today is ${TODAY}. You are generating puzzle #${PUZZLE_ID} for G
 
 In GIST, a paragraph is hidden. Players guess the ONE WORD that captures its essence. Each wrong guess reveals one more sentence of the paragraph as a clue. There are 5 sentences total, revealed one by one.
 
+${DIFFICULTY_INSTRUCTIONS[DIFFICULTY.level]}
+
 Your job: create a puzzle. Choose a concept, emotion, phenomenon, or idea as the answer word. Write a 5-sentence paragraph that describes it without ever saying the word. The paragraph should be beautifully written — like an encyclopedia crossed with a prose poem.
 
 Rules:
-- The answer must be a single common English word (not a proper noun, not a phrase)
+- The answer must be a single English word (not a proper noun, not a phrase)
 - The paragraph must NOT contain the answer word or obvious synonyms
 - Sentence 1 should be the hardest clue (most abstract/indirect)
-- Sentence 5 should be the most revealing (someone could guess from it alone)
+- Sentence 5 should be the most revealing
 - The paragraph should feel like elegant, precise writing — not a riddle
-- Pick varied topics across different domains: emotions, social phenomena, physical experiences, abstract concepts, human behaviors, etc.
 - Also provide 3-5 "close" words that are near-synonyms (a player guessing these gets a yellow result)
 
 Return ONLY valid JSON, no markdown, exactly this format:
 {
   "answer": "loneliness",
+  "difficulty": "EASY",
   "sentences": [
     "It can exist in the middle of a crowd, invisible to everyone including the person experiencing it.",
     "Philosophers have argued it is the fundamental condition of consciousness — the irreducible gap between any two minds.",
@@ -74,9 +138,11 @@ Return ONLY valid JSON, no markdown, exactly this format:
     "The word comes from 'lone' — the state of being the only one of its kind in a particular place."
   ],
   "close": ["isolation", "solitude", "alienation", "emptiness"]
-}`;
+}
 
-console.log(`🧩 Generating GIST puzzle #${PUZZLE_ID}...`);
+Set "difficulty" in the JSON to exactly: "${DIFFICULTY.label}"`;
+
+console.log(`🧩 Generating GIST puzzle #${PUZZLE_ID} [${DIFFICULTY.label} — ${TODAY}]...`);
 const raw = await callClaude(PROMPT);
 
 let puzzle;
@@ -88,15 +154,13 @@ try {
 }
 
 puzzle.id = PUZZLE_ID;
-console.log(`✅ Answer: "${puzzle.answer}"`);
+puzzle.difficulty = puzzle.difficulty || DIFFICULTY.label;
+console.log(`✅ Answer: "${puzzle.answer}" [${puzzle.difficulty}]`);
 console.log(`📝 Sentences: ${puzzle.sentences.length}`);
 
 // Read template and inject puzzle data
 const template = fs.readFileSync("template.html", "utf8");
-const output = template.replace(
-  "__PUZZLE_DATA__",
-  JSON.stringify(puzzle)
-);
+const output = template.replace("__PUZZLE_DATA__", JSON.stringify(puzzle));
 
 fs.writeFileSync("index.html", output);
 console.log(`📄 index.html written for puzzle #${PUZZLE_ID}`);

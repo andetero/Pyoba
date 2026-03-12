@@ -164,3 +164,22 @@ const output = template.replace("__PUZZLE_DATA__", JSON.stringify(puzzle));
 
 fs.writeFileSync("index.html", output);
 console.log(`📄 index.html written for puzzle #${PUZZLE_ID}`);
+
+// Append to puzzles.json archive
+let archive = [];
+try {
+  archive = JSON.parse(fs.readFileSync("puzzles.json", "utf8"));
+} catch(e) { archive = []; }
+
+// Update or insert
+const existingIdx = archive.findIndex(p => p.id === puzzle.id);
+if (existingIdx >= 0) {
+  archive[existingIdx] = puzzle;
+} else {
+  archive.push(puzzle);
+}
+
+// Sort descending by id
+archive.sort((a, b) => b.id - a.id);
+fs.writeFileSync("puzzles.json", JSON.stringify(archive, null, 2));
+console.log(`📚 puzzles.json updated (${archive.length} puzzles total)`);

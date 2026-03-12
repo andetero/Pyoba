@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIST — Play</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f4ee;
+      --ink: #1a1814;
+      --mid: #8a8070;
+      --faint: #e2ddd4;
+      --reveal: #2d5a27;
+      --reveal-bg: #eef4ed;
+      --wrong: #c0392b;
+      --wrong-bg: #fdf0ef;
+      --gold: #b8860b;
+      --gold-bg: #fdf8e8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141210;
+        --ink: #e8e4dc;
+        --mid: #7a7060;
+        --faint: #2a2520;
+        --reveal: #5a9e52;
+        --reveal-bg: #1a2e18;
+        --wrong: #e05a4a;
+        --wrong-bg: #2e1a18;
+        --gold: #d4a030;
+        --gold-bg: #2a2010;
+      }
+    }
+
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); min-height: 100vh; display: flex; flex-direction: column; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 24px; width: 100%; flex: 1; display: flex; flex-direction: column; }
+
+    header { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 20px; border-bottom: 1px solid var(--faint); }
+
+    .logo { font-family: var(--mono); font-size: 22px; font-weight: 400; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; }
+    .logo em { color: var(--gold); font-style: normal; }
+
+    .header-right { display: flex; align-items: center; gap: 12px; }
+
+    .puzzle-num { font-family: var(--mono); font-size: 11px; color: var(--mid); letter-spacing: 0.1em; }
+
+    .btn-icon { background: none; border: 1px solid var(--faint); border-radius: 50%; width: 28px; height: 28px; font-size: 13px; color: var(--mid); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; text-decoration: none; }
+    .btn-icon:hover { border-color: var(--ink); color: var(--ink); }
+
+    .past-banner { background: var(--gold-bg); border: 1px solid var(--faint); border-radius: 8px; padding: 10px 16px; margin: 20px 0 0; font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.1em; text-align: center; }
+
+    .clue-section { padding: 24px 0 24px; flex: 1; }
+    .clue-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+    .clues { display: flex; flex-direction: column; }
+
+    .clue { padding: 14px 0; border-bottom: 1px solid var(--faint); font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--ink); opacity: 0; transform: translateY(8px); animation: fadeUp 0.5s ease forwards; }
+    .clue:first-child { border-top: 1px solid var(--faint); }
+    .clue-num { font-family: var(--mono); font-size: 10px; color: var(--mid); margin-bottom: 4px; letter-spacing: 0.1em; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .locked-clues { display: flex; flex-direction: column; }
+    .clue-locked { padding: 14px 0; border-bottom: 1px solid var(--faint); display: flex; align-items: center; gap: 10px; }
+    .clue-locked:first-child { border-top: 1px solid var(--faint); }
+    .clue-locked-bar { height: 10px; border-radius: 2px; background: var(--faint); }
+
+    .guesses { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .guess-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 6px; font-family: var(--mono); font-size: 14px; animation: fadeUp 0.3s ease forwards; opacity: 0; }
+    .guess-row.wrong { background: var(--wrong-bg); color: var(--wrong); border: 1px solid var(--wrong-bg); }
+    .guess-row.close { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-bg); }
+    .guess-row.correct { background: var(--reveal-bg); color: var(--reveal); border: 1px solid var(--reveal-bg); }
+    .guess-icon { font-size: 16px; }
+    .guess-word { flex: 1; letter-spacing: 0.05em; }
+    .guess-hint { font-size: 11px; opacity: 0.7; }
+
+    .input-section { padding: 20px 0 32px; border-top: 1px solid var(--faint); }
+    .guess-counter { font-family: var(--mono); font-size: 11px; color: var(--mid); margin-bottom: 12px; letter-spacing: 0.1em; }
+    .input-row { display: flex; gap: 10px; }
+
+    .guess-input { flex: 1; background: var(--bg); border: 1.5px solid var(--faint); border-radius: 8px; padding: 12px 16px; font-family: var(--serif); font-size: 18px; color: var(--ink); outline: none; transition: border-color 0.15s; letter-spacing: 0.02em; }
+    .guess-input:focus { border-color: var(--ink); }
+    .guess-input::placeholder { color: var(--mid); font-style: italic; }
+    .guess-input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-guess { background: var(--ink); color: var(--bg); border: none; border-radius: 8px; padding: 12px 24px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
+    .btn-guess:hover { opacity: 0.85; }
+    .btn-guess:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .shake { animation: shake 0.4s ease; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
+
+    .end-card { background: var(--faint); border-radius: 12px; padding: 28px; margin-bottom: 24px; text-align: center; animation: fadeUp 0.5s ease forwards; opacity: 0; }
+    .end-emoji { font-size: 40px; margin-bottom: 12px; }
+    .end-title { font-family: var(--serif); font-size: 22px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
+    .end-answer { font-family: var(--mono); font-size: 13px; color: var(--mid); margin-bottom: 12px; letter-spacing: 0.1em; }
+    .end-answer span { font-size: 16px; color: var(--ink); }
+
+    .community-stats { display: flex; justify-content: center; gap: 28px; margin-bottom: 16px; padding: 14px 0; border-top: 1px solid var(--faint); border-bottom: 1px solid var(--faint); }
+    .stat { text-align: center; }
+    .stat-val { font-family: var(--mono); font-size: 22px; color: var(--ink); }
+    .stat-label { font-family: var(--mono); font-size: 9px; color: var(--mid); letter-spacing: 0.15em; margin-top: 3px; }
+
+    .share-text { background: var(--bg); border: 1px solid var(--faint); border-radius: 6px; padding: 12px 16px; font-family: var(--mono); font-size: 13px; color: var(--ink); margin-bottom: 12px; line-height: 1.8; letter-spacing: 0.05em; white-space: pre-line; text-align: left; }
+
+    .btn-share { background: var(--ink); color: var(--bg); border: none; border-radius: 8px; padding: 12px 28px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; cursor: pointer; transition: opacity 0.15s; width: 100%; margin-bottom: 10px; }
+    .btn-share:hover { opacity: 0.85; }
+    .btn-share.copied { background: var(--reveal); }
+
+    .btn-back { display: block; text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--mid); text-decoration: none; padding: 8px; transition: color 0.15s; }
+    .btn-back:hover { color: var(--ink); }
+
+    .loading { flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
+    .loading-dots { display: flex; gap: 6px; }
+    .loading-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--mid); animation: pulse 1.2s ease-in-out infinite; }
+    .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse { 0%,80%,100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+    .loading p { font-family: var(--mono); font-size: 12px; color: var(--mid); letter-spacing: 0.1em; }
+
+    .error { flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
+    .error p { font-family: var(--mono); font-size: 13px; color: var(--mid); }
+
+    footer { text-align: center; padding: 16px 0 24px; font-family: var(--mono); font-size: 10px; color: var(--mid); letter-spacing: 0.1em; border-top: 1px solid var(--faint); }
+
+    @media (max-width: 480px) { .clue { font-size: 15px; } .guess-input { font-size: 16px; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="/" class="logo">G<em>I</em>ST</a>
+    <div class="header-right">
+      <span class="puzzle-num" id="puzzle-num"></span>
+      <a href="/archive.html" class="btn-icon" title="Archive">☰</a>
+    </div>
+  </header>
+  <div id="app">
+    <div class="loading">
+      <div class="loading-dots"><span></span><span></span><span></span></div>
+      <p>LOADING PUZZLE</p>
+    </div>
+  </div>
+  <footer>GIST · PYOBA.COM</footer>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://ctrwrryyypxfeaggwuzh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_5cLkMj-rmHw-AMmCd2rB4Q_Tf2ChS2v';
+
+// Get puzzle ID from URL
+const params = new URLSearchParams(window.location.search);
+const TARGET_ID = parseInt(params.get('id'));
+
+if (!TARGET_ID) {
+  window.location.href = '/';
+}
+
+let PUZZLE = null;
+let state = null;
+
+async function loadPuzzle() {
+  try {
+    const res = await fetch('/puzzles.json?t=' + Date.now());
+    const puzzles = await res.json();
+    PUZZLE = puzzles.find(p => p.id === TARGET_ID);
+    if (!PUZZLE) throw new Error('Puzzle not found');
+  } catch(e) {
+    document.getElementById('app').innerHTML = `
+      <div class="error">
+        <p>Puzzle #${TARGET_ID} not found.</p>
+        <a href="/archive.html" style="font-family:var(--mono);font-size:12px;color:var(--gold)">← Back to archive</a>
+      </div>`;
+    return false;
+  }
+  return true;
+}
+
+function getStorageKey() { return `gist-${PUZZLE.id}`; }
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(getStorageKey());
+    if (saved) return JSON.parse(saved);
+  } catch(e) {}
+  return { guesses: [], won: false, lost: false, revealedCount: 1, submitted: false };
+}
+
+function saveState() {
+  try {
+    state.answer = PUZZLE.answer;
+    state.sentences = PUZZLE.sentences;
+    localStorage.setItem(getStorageKey(), JSON.stringify(state));
+  } catch(e) {}
+}
+
+async function submitScore(puzzleId, guesses, won) {
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/scores`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ puzzle_id: puzzleId, guesses, won })
+    });
+  } catch(e) {}
+}
+
+async function fetchCommunityStats(puzzleId) {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/scores?puzzle_id=eq.${puzzleId}&select=guesses,won`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } });
+    const rows = await res.json();
+    if (!rows.length) return null;
+    const total = rows.length;
+    const wins = rows.filter(r => r.won).length;
+    return { total, solveRate: Math.round((wins/total)*100), avgGuesses: (rows.reduce((s,r)=>s+r.guesses,0)/total).toFixed(1) };
+  } catch(e) { return null; }
+}
+
+async function render() {
+  const app = document.getElementById('app');
+  document.getElementById('puzzle-num').textContent = PUZZLE.difficulty
+    ? `#${PUZZLE.id} · ${PUZZLE.difficulty}`
+    : `#${PUZZLE.id}`;
+
+  const guessesLeft = 5 - state.guesses.length;
+  const revealedSentences = PUZZLE.sentences.slice(0, state.revealedCount);
+  const lockedCount = PUZZLE.sentences.length - state.revealedCount;
+
+  let html = `<div class="past-banner">PAST PUZZLE · #${PUZZLE.id}</div>`;
+
+  if (state.won || state.lost) {
+    const score = state.won ? state.guesses.length : 'X';
+    const emoji = state.won ? ['🧠','🔥','✨','💡','🎯'][Math.min(state.guesses.length-1,4)] : '😔';
+    const squares = state.guesses.map(g => g.result==='correct'?'🟩':g.result==='close'?'🟨':'🟥').join('');
+    const shareStr = `GIST #${PUZZLE.id} ${score}/5\n${squares}\npyoba.com`;
+    const stats = await fetchCommunityStats(PUZZLE.id);
+    const statsHtml = stats ? `
+      <div class="community-stats">
+        <div class="stat"><div class="stat-val">${stats.total}</div><div class="stat-label">PLAYED</div></div>
+        <div class="stat"><div class="stat-val">${stats.solveRate}%</div><div class="stat-label">SOLVED</div></div>
+        <div class="stat"><div class="stat-val">${stats.avgGuesses}</div><div class="stat-label">AVG GUESSES</div></div>
+      </div>` : '';
+
+    html += `<div class="end-card">
+      <div class="end-emoji">${emoji}</div>
+      <div class="end-title">${state.won ? 'You got the GIST' : 'Not quite'}</div>
+      <div class="end-answer">The answer was <span>${PUZZLE.answer.toUpperCase()}</span></div>
+      ${statsHtml}
+      <div class="share-text" id="share-text">${shareStr}</div>
+      <button class="btn-share" id="btn-share" onclick="copyShare()">COPY & SHARE</button>
+      <a href="/archive.html" class="btn-back">← BACK TO ARCHIVE</a>
+    </div>`;
+  }
+
+  html += `<div class="clue-section">
+    <div class="clue-label">CLUE${revealedSentences.length>1?'S':''} REVEALED — ${revealedSentences.length} of ${PUZZLE.sentences.length}</div>
+    <div class="clues">`;
+  revealedSentences.forEach((s,i) => {
+    html += `<div class="clue" style="animation-delay:${i*0.08}s"><div class="clue-num">— ${i+1}</div>${s}</div>`;
+  });
+  html += `</div>`;
+
+  if (lockedCount > 0 && !state.won && !state.lost) {
+    html += `<div class="locked-clues">`;
+    for (let i = 0; i < lockedCount; i++) {
+      html += `<div class="clue-locked">
+        <div class="clue-locked-bar" style="width:${40+Math.random()*40}%"></div>
+        <div class="clue-locked-bar" style="width:${20+Math.random()*30}%"></div>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+  html += `</div>`;
+
+  if (state.guesses.length > 0) {
+    html += `<div class="guesses">`;
+    state.guesses.forEach(g => {
+      const icon = g.result==='correct'?'✓':g.result==='close'?'~':'✗';
+      html += `<div class="guess-row ${g.result}" style="animation-delay:0s">
+        <span class="guess-icon">${icon}</span>
+        <span class="guess-word">${g.word}</span>
+        <span class="guess-hint">${g.result==='close'?'close...':''}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (!state.won && !state.lost) {
+    html += `<div class="input-section">
+      <div class="guess-counter">${guessesLeft} GUESS${guessesLeft!==1?'ES':''} REMAINING</div>
+      <div class="input-row">
+        <input type="text" class="guess-input" id="guess-input"
+          placeholder="your one word..." maxlength="30"
+          autocomplete="off" autocorrect="off" spellcheck="false"
+          onkeydown="handleKey(event)">
+        <button class="btn-guess" onclick="submitGuess()">GUESS</button>
+      </div>
+    </div>`;
+  }
+
+  app.innerHTML = html;
+  if (!state.won && !state.lost) document.getElementById('guess-input')?.focus();
+}
+
+function normalize(word) { return word.trim().toLowerCase().replace(/[^a-z]/g,''); }
+
+function checkGuess(word) {
+  const w = normalize(word);
+  const answer = normalize(PUZZLE.answer);
+  if (w === answer) return 'correct';
+  const close = (PUZZLE.close||[]).map(normalize);
+  if (close.includes(w)) return 'close';
+  if (answer.startsWith(w)||w.startsWith(answer)) return 'close';
+  return 'wrong';
+}
+
+async function submitGuess() {
+  const input = document.getElementById('guess-input');
+  if (!input) return;
+  const word = input.value.trim();
+  if (!word) return;
+
+  const result = checkGuess(word);
+  state.guesses.push({ word, result });
+
+  if (result === 'correct') state.won = true;
+  else if (result === 'wrong' && state.revealedCount < PUZZLE.sentences.length) state.revealedCount++;
+  if (!state.won && state.guesses.length >= 5) { state.lost = true; state.revealedCount = PUZZLE.sentences.length; }
+
+  if ((state.won || state.lost) && !state.submitted) {
+    state.submitted = true;
+    submitScore(PUZZLE.id, state.guesses.length, state.won);
+  }
+
+  saveState();
+  await render();
+
+  if (result !== 'correct') {
+    setTimeout(() => {
+      const inp = document.getElementById('guess-input');
+      if (inp) { inp.classList.add('shake'); setTimeout(()=>inp.classList.remove('shake'),400); }
+    }, 50);
+  }
+}
+
+function handleKey(e) { if (e.key==='Enter') submitGuess(); }
+
+function copyShare() {
+  const text = document.getElementById('share-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('btn-share');
+    btn.textContent = 'COPIED!';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='COPY & SHARE'; btn.classList.remove('copied'); },2000);
+  });
+}
+
+// Init
+(async () => {
+  const ok = await loadPuzzle();
+  if (!ok) return;
+  state = loadState();
+  // Save puzzle metadata to localStorage
+  if (!state.answer) { state.answer = PUZZLE.answer; state.sentences = PUZZLE.sentences; saveState(); }
+  await render();
+})();
+</script>
+</body>
+</html>

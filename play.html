@@ -10,16 +10,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f4ee;
-      --ink: #1a1814;
-      --mid: #8a8070;
-      --faint: #e2ddd4;
-      --reveal: #2d5a27;
-      --reveal-bg: #eef4ed;
-      --wrong: #c0392b;
-      --wrong-bg: #fdf0ef;
-      --gold: #b8860b;
-      --gold-bg: #fdf8e8;
+      --bg: #f7f4ee; --ink: #1a1814; --mid: #8a8070; --faint: #e2ddd4;
+      --reveal: #2d5a27; --reveal-bg: #eef4ed;
+      --wrong: #c0392b; --wrong-bg: #fdf0ef;
+      --gold: #b8860b; --gold-bg: #fdf8e8;
       --serif: 'Playfair Display', Georgia, serif;
       --mono: 'DM Mono', monospace;
       --sans: 'DM Sans', sans-serif;
@@ -27,28 +21,19 @@
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #141210;
-        --ink: #e8e4dc;
-        --mid: #7a7060;
-        --faint: #2a2520;
-        --reveal: #5a9e52;
-        --reveal-bg: #1a2e18;
-        --wrong: #e05a4a;
-        --wrong-bg: #2e1a18;
-        --gold: #d4a030;
-        --gold-bg: #2a2010;
+        --bg: #141210; --ink: #e8e4dc; --mid: #7a7060; --faint: #2a2520;
+        --reveal: #5a9e52; --reveal-bg: #1a2e18;
+        --wrong: #e05a4a; --wrong-bg: #2e1a18;
+        --gold: #d4a030; --gold-bg: #2a2010;
       }
     }
 
     body { background: var(--bg); color: var(--ink); font-family: var(--sans); min-height: 100vh; display: flex; flex-direction: column; }
 
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
+      content: ''; position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
+      pointer-events: none; z-index: 0;
     }
 
     .wrap { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 24px; width: 100%; flex: 1; display: flex; flex-direction: column; }
@@ -59,7 +44,6 @@
     .logo em { color: var(--gold); font-style: normal; }
 
     .header-right { display: flex; align-items: center; gap: 12px; }
-
     .puzzle-num { font-family: var(--mono); font-size: 11px; color: var(--mid); letter-spacing: 0.1em; }
 
     .btn-icon { background: none; border: 1px solid var(--faint); border-radius: 50%; width: 28px; height: 28px; font-size: 13px; color: var(--mid); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; text-decoration: none; }
@@ -165,13 +149,9 @@
 const SUPABASE_URL = 'https://ctrwrryyypxfeaggwuzh.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_5cLkMj-rmHw-AMmCd2rB4Q_Tf2ChS2v';
 
-// Get puzzle ID from URL
 const params = new URLSearchParams(window.location.search);
 const TARGET_ID = parseInt(params.get('id'));
-
-if (!TARGET_ID) {
-  window.location.href = '/';
-}
+if (!TARGET_ID) window.location.href = '/';
 
 let PUZZLE = null;
 let state = null;
@@ -336,6 +316,7 @@ async function submitGuess() {
   if (!input) return;
   const word = input.value.trim();
   if (!word) return;
+  if (state.won || state.lost) return;  // prevent double submission
 
   const result = checkGuess(word);
   state.guesses.push({ word, result });
@@ -372,12 +353,10 @@ function copyShare() {
   });
 }
 
-// Init
 (async () => {
   const ok = await loadPuzzle();
   if (!ok) return;
   state = loadState();
-  // Save puzzle metadata to localStorage
   if (!state.answer) { state.answer = PUZZLE.answer; state.sentences = PUZZLE.sentences; saveState(); }
   await render();
 })();

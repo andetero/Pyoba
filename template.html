@@ -209,19 +209,7 @@ const PUZZLE = __PUZZLE_DATA__;
 const STORAGE_KEY = `gist-${PUZZLE.id}`;
 
 let state = loadState();
-  
-// Save puzzle metadata for archive
-try {
-  const meta = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  if (!meta.answer) {
-    const existing = loadState();
-    existing.answer = PUZZLE.answer;
-    existing.sentences = PUZZLE.sentences;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
-    state = existing;
-  }
-} catch(e) {}
-  
+
 function loadState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -269,7 +257,8 @@ async function fetchCommunityStats() {
 }
 
 async function render() {
-document.getElementById('puzzle-num').textContent = PUZZLE.difficulty ? `#${PUZZLE.id} · ${PUZZLE.difficulty}` : `#${PUZZLE.id}`;  const app = document.getElementById('app');
+  document.getElementById('puzzle-num').textContent = `#${PUZZLE.id}`;
+  const app = document.getElementById('app');
   const guessesLeft = 5 - state.guesses.length;
   const revealedSentences = PUZZLE.sentences.slice(0, state.revealedCount);
   const lockedCount = PUZZLE.sentences.length - state.revealedCount;
@@ -368,6 +357,7 @@ async function submitGuess() {
   if (!input) return;
   const word = input.value.trim();
   if (!word) return;
+  if (state.won || state.lost) return;
 
   const result = checkGuess(word);
   state.guesses.push({ word, result });

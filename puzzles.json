@@ -1,5 +1,23 @@
 [
   {
+    "answer": "apophenia",
+    "difficulty": "HARD",
+    "sentences": [
+      "It transforms randomness into revelation, chaos into cosmos, meaningless coincidence into profound design.",
+      "The human mind, desperate for order, weaves narratives from scattered fragments that have no inherent connection.",
+      "Conspiracy theorists and mystics alike fall victim to its seductive pull, finding elaborate plots in statistical noise.",
+      "Psychologists recognize it as both a symptom of certain disorders and a universal cognitive tendency that helped our ancestors survive.",
+      "Named by a German neurologist in 1958, it describes the perception of meaningful patterns or connections in random or meaningless information."
+    ],
+    "close": [
+      "pareidolia",
+      "confirmation",
+      "delusion",
+      "projection"
+    ],
+    "id": 9
+  },
+  {
     "answer": "nostalgia",
     "difficulty": "HARD",
     "sentences": [
@@ -9,7 +27,13 @@
       "The feeling grows stronger not with the significance of what was lost, but with the impossibility of its return.",
       "From the Greek words for 'homecoming' and 'pain,' it describes the bittersweet ache of longing for a past that exists now only in the architecture of remembrance."
     ],
-    "close": ["melancholy", "longing", "wistfulness", "yearning", "homesickness"],
+    "close": [
+      "melancholy",
+      "longing",
+      "wistfulness",
+      "yearning",
+      "homesickness"
+    ],
     "id": 8
   },
   {
@@ -22,34 +46,14 @@
       "Those who possess it in excess are often described as ruthless; those who lack it entirely are called content.",
       "The word derives from the Latin for 'going around' — as in a Roman politician canvassing for votes, circling the forum in search of support."
     ],
-    "close": ["drive", "determination", "aspiration", "hunger", "motivation"],
+    "close": [
+      "drive",
+      "determination",
+      "aspiration",
+      "hunger",
+      "motivation"
+    ],
     "id": 7
-  },
-  {
-    "answer": "memory",
-    "difficulty": "EASY",
-    "sentences": [
-      "It transforms with each act of retrieval, becoming less faithful to its origin while growing more essential to identity.",
-      "Neuroscientists describe it as a distributed symphony, with no single conductor but countless instruments playing across the brain's vast orchestra.",
-      "Time both strengthens and weakens it — recent events fade while distant moments crystallize into permanent fixtures of the mind.",
-      "Without it, every face would be a stranger's, every room entered for the first time, every grief freshly born.",
-      "The ancient Greeks built elaborate mental palaces to house it, walking imaginary corridors to retrieve what they needed to remember."
-    ],
-    "close": ["recollection", "remembrance", "recall", "reminiscence"],
-    "id": 4
-  },
-  {
-    "answer": "hunger",
-    "difficulty": "EASY",
-    "sentences": [
-      "It begins as a whisper from the body and becomes, if ignored long enough, the only thought the mind can hold.",
-      "Every culture has built elaborate rituals around its satisfaction, transforming biological necessity into art, ceremony, and communion.",
-      "It sharpens the senses — food smells more vivid, time moves more slowly, the world contracts to a single need.",
-      "Philosophers have used it as a metaphor for desire itself, arguing that all wanting shares its restless, consuming quality.",
-      "The body experiences it as an emptiness, but it is in fact the opposite — a cascade of signals, hormones, and electrical impulses demanding to be heard."
-    ],
-    "close": ["appetite", "craving", "starvation", "desire", "thirst"],
-    "id": 3
   },
   {
     "answer": "silence",
@@ -61,7 +65,13 @@
       "It can be a gift between two people who trust each other completely, or a weapon deployed by those who refuse to speak.",
       "John Cage famously composed four minutes and thirty-three seconds of it, insisting that what the audience heard instead was the real piece."
     ],
-    "close": ["quiet", "stillness", "hush", "muteness", "calm"],
+    "close": [
+      "quiet",
+      "stillness",
+      "hush",
+      "muteness",
+      "calm"
+    ],
     "id": 6
   },
   {
@@ -74,8 +84,51 @@
       "Religious traditions across the world place it at the center of moral life, though they differ on whether it must be earned or can be freely given.",
       "The word shares its root with 'give' — it is, at its core, an act of releasing a debt that was genuinely owed."
     ],
-    "close": ["pardon", "absolution", "mercy", "clemency", "grace"],
+    "close": [
+      "pardon",
+      "absolution",
+      "mercy",
+      "clemency",
+      "grace"
+    ],
     "id": 5
+  },
+  {
+    "answer": "memory",
+    "difficulty": "EASY",
+    "sentences": [
+      "It transforms with each act of retrieval, becoming less faithful to its origin while growing more essential to identity.",
+      "Neuroscientists describe it as a distributed symphony, with no single conductor but countless instruments playing across the brain's vast orchestra.",
+      "Time both strengthens and weakens it — recent events fade while distant moments crystallize into permanent fixtures of the mind.",
+      "Without it, every face would be a stranger's, every room entered for the first time, every grief freshly born.",
+      "The ancient Greeks built elaborate mental palaces to house it, walking imaginary corridors to retrieve what they needed to remember."
+    ],
+    "close": [
+      "recollection",
+      "remembrance",
+      "recall",
+      "reminiscence"
+    ],
+    "id": 4
+  },
+  {
+    "answer": "hunger",
+    "difficulty": "EASY",
+    "sentences": [
+      "It begins as a whisper from the body and becomes, if ignored long enough, the only thought the mind can hold.",
+      "Every culture has built elaborate rituals around its satisfaction, transforming biological necessity into art, ceremony, and communion.",
+      "It sharpens the senses — food smells more vivid, time moves more slowly, the world contracts to a single need.",
+      "Philosophers have used it as a metaphor for desire itself, arguing that all wanting shares its restless, consuming quality.",
+      "The body experiences it as an emptiness, but it is in fact the opposite — a cascade of signals, hormones, and electrical impulses demanding to be heard."
+    ],
+    "close": [
+      "appetite",
+      "craving",
+      "starvation",
+      "desire",
+      "thirst"
+    ],
+    "id": 3
   },
   {
     "answer": "embarrassment",
@@ -87,7 +140,13 @@
       "It differs from shame in an important way: shame says 'I am bad,' while this feeling says only 'I have been seen doing something bad.'",
       "Even the memory of it, years later, can produce a physical sensation — the sudden heat of a moment the conscious mind would rather not revisit."
     ],
-    "close": ["shame", "humiliation", "mortification", "awkwardness", "chagrin"],
+    "close": [
+      "shame",
+      "humiliation",
+      "mortification",
+      "awkwardness",
+      "chagrin"
+    ],
     "id": 2
   },
   {
@@ -100,7 +159,13 @@
       "In neuroscience, it marks the point at which a signal becomes strong enough to fire — the difference between potential and action.",
       "The word comes from the Old English for the piece of wood you step across to enter a home, that worn plank separating the world outside from the world within."
     ],
-    "close": ["boundary", "limit", "tipping point", "edge", "margin"],
+    "close": [
+      "boundary",
+      "limit",
+      "tipping point",
+      "edge",
+      "margin"
+    ],
     "id": 1
   }
 ]

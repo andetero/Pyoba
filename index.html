@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GIST — Daily Word Game</title>
   <meta name="description" content="Read between the lines. Guess the one word that captures it all.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="GIST">
+  <meta name="theme-color" content="#141210">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -196,7 +202,7 @@
       <span class="c">~ isolation</span> — close! (same territory)<br>
       <span class="r">✓ loneliness</span> — that's the GIST
     </div>
-    <p style="font-size:13px;">New puzzle every day at midnight CST.</p>
+    <p style="font-size:13px;">A NEW PUZZLE EVERY DAY.</p>
     <button class="btn-close" onclick="closeModal()">GOT IT</button>
   </div>
 </div>
@@ -205,23 +211,11 @@
 const SUPABASE_URL = 'https://ctrwrryyypxfeaggwuzh.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_5cLkMj-rmHw-AMmCd2rB4Q_Tf2ChS2v';
 
-const PUZZLE = {"answer":"nostalgia","difficulty":"HARD","sentences":["Time becomes geography in this peculiar affliction, where distance is measured not in miles but in moments that can never be retraced.","The Greeks considered it a medical condition, a pathology of soldiers and sailors who had wandered too far from their origins.","It transforms memory into fiction, burnishing ordinary experiences with a golden light they never possessed in their original occurrence.","The feeling grows stronger not with the significance of what was lost, but with the impossibility of its return.","From the Greek words for 'homecoming' and 'pain,' it describes the bittersweet ache of longing for a past that exists now only in the architecture of remembrance."],"close":["melancholy","longing","wistfulness","yearning","homesickness"],"id":8};
+const PUZZLE = {"answer":"apophenia","difficulty":"HARD","sentences":["It transforms randomness into revelation, chaos into cosmos, meaningless coincidence into profound design.","The human mind, desperate for order, weaves narratives from scattered fragments that have no inherent connection.","Conspiracy theorists and mystics alike fall victim to its seductive pull, finding elaborate plots in statistical noise.","Psychologists recognize it as both a symptom of certain disorders and a universal cognitive tendency that helped our ancestors survive.","Named by a German neurologist in 1958, it describes the perception of meaningful patterns or connections in random or meaningless information."],"close":["pareidolia","confirmation","delusion","projection"],"id":9};
 const STORAGE_KEY = `gist-${PUZZLE.id}`;
 
 let state = loadState();
-  
-// Save puzzle metadata for archive
-try {
-  const meta = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  if (!meta.answer) {
-    const existing = loadState();
-    existing.answer = PUZZLE.answer;
-    existing.sentences = PUZZLE.sentences;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
-    state = existing;
-  }
-} catch(e) {}
-  
+
 function loadState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -269,7 +263,8 @@ async function fetchCommunityStats() {
 }
 
 async function render() {
-document.getElementById('puzzle-num').textContent = PUZZLE.difficulty ? `#${PUZZLE.id} · ${PUZZLE.difficulty}` : `#${PUZZLE.id}`;  const app = document.getElementById('app');
+  document.getElementById('puzzle-num').textContent = `#${PUZZLE.id}`;
+  const app = document.getElementById('app');
   const guessesLeft = 5 - state.guesses.length;
   const revealedSentences = PUZZLE.sentences.slice(0, state.revealedCount);
   const lockedCount = PUZZLE.sentences.length - state.revealedCount;
@@ -368,6 +363,7 @@ async function submitGuess() {
   if (!input) return;
   const word = input.value.trim();
   if (!word) return;
+  if (state.won || state.lost) return;
 
   const result = checkGuess(word);
   state.guesses.push({ word, result });

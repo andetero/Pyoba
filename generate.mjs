@@ -135,6 +135,7 @@ Rules:
 - Sentence 5 should be the most revealing
 - The paragraph should feel like elegant, precise writing — not a riddle
 - Also provide 3-5 "close" words that are near-synonyms (a player guessing these gets a yellow result)
+- The "close" array MUST include common variations of the answer word (verb forms, plural, adjective forms, past tense, etc.) — for example if the answer is "anticipation" include "anticipate", "anticipating", "anticipated"
 
 Return ONLY valid JSON, no markdown, exactly this format:
 {

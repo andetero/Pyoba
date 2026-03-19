@@ -1,5 +1,24 @@
 [
   {
+    "answer": "anticipation",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It exists only in the space between now and later, feeding on uncertainty like a flame feeds on oxygen.",
+      "Children feel it most acutely in the weeks before birthdays, while adults experience a more complex version before job interviews or medical results.",
+      "It can be delicious or torturous, depending on whether the expected outcome is desired or dreaded.",
+      "The emotion intensifies as the moment approaches, creating a peculiar mix of excitement and anxiety that can make minutes feel like hours.",
+      "It is the psychological state of looking forward to something, the mind's attempt to live in a future that hasn't yet arrived."
+    ],
+    "close": [
+      "expectation",
+      "excitement",
+      "suspense",
+      "eagerness",
+      "apprehension"
+    ],
+    "id": 14
+  },
+  {
     "answer": "momentum",
     "difficulty": "MEDIUM",
     "sentences": [

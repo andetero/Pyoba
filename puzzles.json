@@ -1,5 +1,24 @@
 [
   {
+    "answer": "serendipity",
+    "difficulty": "HARD",
+    "sentences": [
+      "It dwells in the spaces between intention and outcome, where preparation meets the unexpected in perfect collision.",
+      "Scientists know it well — penicillin, X-rays, and the microwave oven all emerged from its generous accidents.",
+      "Unlike luck, which is blind chance, this phenomenon requires an alert mind capable of recognizing significance in the unplanned.",
+      "The word was coined by Horace Walpole in 1754, inspired by a Persian fairy tale about three princes making fortunate discoveries.",
+      "It describes the faculty of finding valuable or agreeable things not sought for — happy accidents that change everything."
+    ],
+    "close": [
+      "serendipitous",
+      "coincidence",
+      "synchronicity",
+      "fortune",
+      "destiny"
+    ],
+    "id": 15
+  },
+  {
     "answer": "anticipation",
     "difficulty": "MEDIUM",
     "sentences": [

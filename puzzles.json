@@ -1,5 +1,24 @@
 [
   {
+    "answer": "procrastination",
+    "difficulty": "HARD",
+    "sentences": [
+      "It transforms the future into an enemy, making tomorrow both salvation and tormentor in equal measure.",
+      "Psychologists recognize it as a sophisticated form of emotional regulation, where present comfort trumps future benefit.",
+      "The phenomenon creates its own temporal paradox: the longer it persists, the more it justifies its own existence.",
+      "It thrives in the gap between intention and action, feeding on perfectionism and fear of judgment.",
+      "Students and professionals alike know its cruel mathematics — how a fifteen-minute task can expand to fill weeks of anxious avoidance."
+    ],
+    "close": [
+      "procrastinate",
+      "procrastinating",
+      "procrastinated",
+      "delay",
+      "avoidance"
+    ],
+    "id": 16
+  },
+  {
     "answer": "serendipity",
     "difficulty": "HARD",
     "sentences": [

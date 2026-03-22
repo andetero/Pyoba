@@ -1,5 +1,24 @@
 [
   {
+    "answer": "fermentation",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "Ancient civilizations stumbled upon this process by accident, yet it became the foundation of preservation, celebration, and sustenance across every culture.",
+      "Invisible organisms wage microscopic wars in sealed vessels, consuming sugars and starches while exhaling gases that transform humble ingredients into something altogether different.",
+      "The same biological dance that creates wine from grapes also births bread from flour, cheese from milk, and kimchi from cabbage.",
+      "Temperature, time, and the delicate balance of beneficial bacteria determine whether the outcome will be sublime or spoiled.",
+      "Bubbles rising through liquid, the sharp tang on the tongue, and the unmistakable smell of transformation signal that millions of tiny workers have completed their ancient alchemy."
+    ],
+    "close": [
+      "ferment",
+      "fermenting",
+      "fermented",
+      "brewing",
+      "culturing"
+    ],
+    "id": 17
+  },
+  {
     "answer": "procrastination",
     "difficulty": "HARD",
     "sentences": [

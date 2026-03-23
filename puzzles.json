@@ -1,5 +1,24 @@
 [
   {
+    "answer": "laughter",
+    "difficulty": "EASY",
+    "sentences": [
+      "It erupts without permission, a sudden rebellion of the body against the mind's attempt at composure.",
+      "Scientists say it releases endorphins and reduces stress hormones, but this clinical description feels inadequate for something so essentially human.",
+      "Babies do it before they can walk or talk, suggesting it might be more fundamental than language itself.",
+      "It can be contagious in the truest sense — spreading through a room faster than any conscious thought.",
+      "The sound ranges from a quiet chuckle to an uncontrollable roar, often triggered by the unexpected collision of expectation and reality."
+    ],
+    "close": [
+      "laugh",
+      "laughing",
+      "laughed",
+      "chuckle",
+      "giggle"
+    ],
+    "id": 18
+  },
+  {
     "answer": "fermentation",
     "difficulty": "WILDCARD",
     "sentences": [

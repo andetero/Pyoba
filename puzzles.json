@@ -1,5 +1,24 @@
 [
   {
+    "answer": "vulnerability",
+    "difficulty": "HARD",
+    "sentences": [
+      "It emerges precisely at the moment when our carefully constructed defenses prove most inadequate to the task at hand.",
+      "Artists and performers know it intimately — that electric sensation of standing completely exposed before an audience's judgment.",
+      "Paradoxically, it often accompanies our most courageous acts, the very moments when we choose to step forward despite our fears.",
+      "In relationships, it marks the difference between mere companionship and true intimacy, requiring us to lower the walls we've built around our deepest selves.",
+      "It is the tender spot where strength meets uncertainty, where we acknowledge that caring deeply about something inevitably means it has the power to wound us."
+    ],
+    "close": [
+      "vulnerable",
+      "exposure",
+      "fragility",
+      "openness",
+      "susceptibility"
+    ],
+    "id": 23
+  },
+  {
     "answer": "melancholy",
     "difficulty": "HARD",
     "sentences": [

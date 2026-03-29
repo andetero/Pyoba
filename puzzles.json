@@ -1,5 +1,24 @@
 [
   {
+    "answer": "crystallization",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "It is the moment when chaos surrenders to order, when the formless discovers its most perfect architecture.",
+      "In laboratories and caves alike, it transforms the dissolved and scattered into monuments of geometric precision.",
+      "Temperature and pressure conspire as matchmakers, bringing together what was meant to be unified.",
+      "Salt does it in evaporating tide pools, sugar does it in candy makers' copper pots, and minerals do it in the cathedral spaces beneath mountains.",
+      "Atoms lock hands in repeating lattices, building structures so regular that they catch light and throw it back in brilliant, angular faces."
+    ],
+    "close": [
+      "crystallize",
+      "crystallizing",
+      "crystallized",
+      "precipitation",
+      "solidification"
+    ],
+    "id": 24
+  },
+  {
     "answer": "vulnerability",
     "difficulty": "HARD",
     "sentences": [

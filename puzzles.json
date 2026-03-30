@@ -1,5 +1,24 @@
 [
   {
+    "answer": "patience",
+    "difficulty": "EASY",
+    "sentences": [
+      "It grows stronger with practice, like a muscle that learns to hold weight without trembling.",
+      "Parents discover reservoirs of it they never knew existed, while children seem born without any trace of it.",
+      "It transforms waiting from suffering into something approaching grace.",
+      "Gardeners cultivate it alongside their plants, knowing that the best things cannot be rushed.",
+      "It is the quiet space between wanting something and receiving it, filled with steady breathing and unclenched hands."
+    ],
+    "close": [
+      "patient",
+      "waiting",
+      "endurance",
+      "tolerance",
+      "forbearance"
+    ],
+    "id": 25
+  },
+  {
     "answer": "crystallization",
     "difficulty": "WILDCARD",
     "sentences": [

@@ -1,5 +1,24 @@
 [
   {
+    "answer": "obsession",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It begins as a gentle current in the mind's river, almost pleasant in its singular direction.",
+      "What starts as interest transforms into something that rewrites the architecture of daily life.",
+      "Sleep becomes secondary to the magnetic pull of a single idea, person, or pursuit that demands constant attention.",
+      "Friends and family watch helplessly as reasonable boundaries dissolve into an all-consuming focus that excludes nearly everything else.",
+      "The Latin root means 'to besiege' — a perfect description of how one thought can lay siege to an entire consciousness."
+    ],
+    "close": [
+      "obsessed",
+      "obsessing",
+      "obsessive",
+      "fixation",
+      "compulsion"
+    ],
+    "id": 28
+  },
+  {
     "answer": "ritual",
     "difficulty": "MEDIUM",
     "sentences": [

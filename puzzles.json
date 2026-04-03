@@ -1,5 +1,24 @@
 [
   {
+    "answer": "metamorphosis",
+    "difficulty": "HARD",
+    "sentences": [
+      "What appears to be destruction is often the universe's most elaborate form of construction.",
+      "The process requires a complete surrender of what was, with no guarantee of what will emerge.",
+      "Nature demonstrates it most dramatically in cocoons and chrysalises, but it occurs wherever potential meets pressure.",
+      "Human versions unfold more slowly — through trauma, love, or the quiet accumulation of small choices over time.",
+      "From the Greek meaning 'to transform or change in shape,' it describes the profound alteration of form, structure, or substance."
+    ],
+    "close": [
+      "transformation",
+      "metamorphose",
+      "metamorphic",
+      "metamorphoses",
+      "change"
+    ],
+    "id": 29
+  },
+  {
     "answer": "obsession",
     "difficulty": "MEDIUM",
     "sentences": [

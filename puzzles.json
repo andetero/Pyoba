@@ -1,5 +1,24 @@
 [
   {
+    "answer": "hubris",
+    "difficulty": "HARD",
+    "sentences": [
+      "It masquerades as confidence but carries within itself the seeds of its own destruction.",
+      "Ancient Greeks considered it the most dangerous of human flaws, inevitably drawing the attention of vengeful gods.",
+      "It transforms achievements into pedestals, and pedestals into platforms for ever-greater ambition.",
+      "Leaders throughout history have fallen not to external enemies but to this internal blindness that makes them believe their own mythology.",
+      "The word describes that fatal overconfidence that makes mortals forget their limitations and challenge forces beyond their control."
+    ],
+    "close": [
+      "arrogance",
+      "pride",
+      "overconfidence",
+      "conceit",
+      "hubris"
+    ],
+    "id": 30
+  },
+  {
     "answer": "metamorphosis",
     "difficulty": "HARD",
     "sentences": [

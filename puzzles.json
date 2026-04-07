@@ -1,5 +1,24 @@
 [
   {
+    "answer": "doubt",
+    "difficulty": "EASY",
+    "sentences": [
+      "It arrives uninvited in the space between what we know and what we wish we knew.",
+      "Scientists consider it essential to discovery, while believers often see it as the enemy of faith.",
+      "It can paralyze decision-making or inspire deeper investigation, depending on how we meet it.",
+      "Children ask endless questions partly to quiet this feeling, though it grows stronger with age and experience.",
+      "The word shares its root with 'dubious' — that uncomfortable state of being uncertain about the truth of something."
+    ],
+    "close": [
+      "uncertainty",
+      "questioning",
+      "skepticism",
+      "doubtful",
+      "doubting"
+    ],
+    "id": 33
+  },
+  {
     "answer": "reflection",
     "difficulty": "EASY",
     "sentences": [

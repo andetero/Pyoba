@@ -1,5 +1,24 @@
 [
   {
+    "answer": "persistence",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It is the quiet force that carves canyons from mountains and wears smooth the roughest stone.",
+      "Darwin called it more valuable than talent, and Edison credited it above genius for his inventions.",
+      "Children display it naturally when learning to walk, falling hundreds of times without considering surrender.",
+      "It transforms ordinary effort into extraordinary achievement through the simple act of not stopping.",
+      "The word literally means 'to stand firm through' — continuing steadfastly despite obstacles or discouragement."
+    ],
+    "close": [
+      "persist",
+      "persisting",
+      "persisted",
+      "perseverance",
+      "tenacity"
+    ],
+    "id": 34
+  },
+  {
     "answer": "doubt",
     "difficulty": "EASY",
     "sentences": [

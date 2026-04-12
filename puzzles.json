@@ -1,5 +1,23 @@
 [
   {
+    "answer": "synesthesia",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "It transforms the ordinary architecture of perception into a cathedral where senses refuse to worship in separate chapels.",
+      "Musicians describe hearing colors cascade from piano keys, while mathematicians watch numbers dance in predictable hues across their mental stage.",
+      "This neurological poetry affects roughly four percent of the population, creating automatic bridges between sensory realms that remain forever separate for most minds.",
+      "Letters might taste of copper or cinnamon, weekdays arrive dressed in specific shades, and certain voices paint geometric patterns in the air.",
+      "The word itself means 'joined sensation' — a condition where stimulating one sensory pathway leads to involuntary experiences in another, making the alphabet a rainbow and music a tangible landscape."
+    ],
+    "close": [
+      "synesthetic",
+      "synesthete",
+      "synaesthetic",
+      "cross-modal"
+    ],
+    "id": 38
+  },
+  {
     "answer": "disillusionment",
     "difficulty": "HARD",
     "sentences": [

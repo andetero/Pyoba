@@ -1,5 +1,24 @@
 [
   {
+    "answer": "gravity",
+    "difficulty": "EASY",
+    "sentences": [
+      "It is the silent choreographer of every dance, the invisible hand that shapes every gesture.",
+      "Without it, rivers would have no direction, tears would never fall, and mountains would crumble into space.",
+      "Einstein revealed it not as a force but as the very curvature of existence itself.",
+      "Children discover it through scraped knees and dropped toys, learning its lessons before they know its name.",
+      "It pulls everything toward the center of the Earth at 9.8 meters per second squared."
+    ],
+    "close": [
+      "gravitational",
+      "weight",
+      "pull",
+      "attraction",
+      "heaviness"
+    ],
+    "id": 39
+  },
+  {
     "answer": "synesthesia",
     "difficulty": "WILDCARD",
     "sentences": [

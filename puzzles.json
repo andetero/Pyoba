@@ -1,5 +1,24 @@
 [
   {
+    "answer": "nostalgia",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It transforms the mundane details of yesterday into precious artifacts, each one glowing with significance that was never there at the time.",
+      "Psychologists describe it as a complex emotion that serves an adaptive function, helping us maintain continuity of identity across time.",
+      "It can be triggered by a song, a scent, or the quality of light on an autumn afternoon, transporting us instantly across decades.",
+      "Unlike simple remembering, it involves a bittersweet longing for times and places that can never be revisited exactly as they were.",
+      "The word itself comes from Greek roots meaning 'homecoming pain' — originally considered a medical condition affecting soldiers far from home."
+    ],
+    "close": [
+      "nostalgic",
+      "reminiscence",
+      "wistfulness",
+      "longing",
+      "reminisce"
+    ],
+    "id": 41
+  },
+  {
     "answer": "memory",
     "difficulty": "EASY",
     "sentences": [

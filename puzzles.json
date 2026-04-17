@@ -1,5 +1,24 @@
 [
   {
+    "answer": "euphemism",
+    "difficulty": "HARD",
+    "sentences": [
+      "It is the art of wrapping harsh realities in softer cloth, a linguistic sleight of hand that reveals as much about the speaker as the subject.",
+      "Politicians and funeral directors are among its most devoted practitioners, wielding it like a shield against discomfort.",
+      "It transforms 'fired' into 'let go,' 'war' into 'conflict,' and 'dying' into 'passing away,' creating distance through indirection.",
+      "The impulse springs from politeness, fear, or sometimes manipulation — the desire to make the unpalatable somehow more digestible.",
+      "This rhetorical device substitutes mild or vague terms for those considered too blunt, offensive, or emotionally charged for the context."
+    ],
+    "close": [
+      "euphemistic",
+      "euphemisms",
+      "circumlocution",
+      "understatement",
+      "doublespeak"
+    ],
+    "id": 43
+  },
+  {
     "answer": "betrayal",
     "difficulty": "MEDIUM",
     "sentences": [

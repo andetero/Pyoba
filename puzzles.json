@@ -1,5 +1,24 @@
 [
   {
+    "answer": "resonance",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "In the cathedral of existence, every structure contains the potential for its own undoing through the marriage of frequency and form.",
+      "Wine glasses shatter not from volume but from precision — the exact mathematical relationship between sound waves and molecular architecture.",
+      "Opera singers train for years to find the sweet spot where human voice meets crystal lattice, where breath becomes destruction.",
+      "Bridges have fallen when marching soldiers unwittingly matched their footsteps to the span's natural oscillation, turning order into chaos.",
+      "It occurs when an external force vibrates at the same frequency as an object's natural tendency to move, amplifying small inputs into dramatic results."
+    ],
+    "close": [
+      "resonant",
+      "resonate",
+      "resonating",
+      "resonated",
+      "vibration"
+    ],
+    "id": 45
+  },
+  {
     "answer": "ambivalence",
     "difficulty": "HARD",
     "sentences": [

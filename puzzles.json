@@ -1,5 +1,24 @@
 [
   {
+    "answer": "hunger",
+    "difficulty": "EASY",
+    "sentences": [
+      "It begins as whispers from within, so subtle they might be mistaken for restlessness or distraction.",
+      "Ancient philosophers called it one of the great motivators, capable of driving both creation and destruction.",
+      "The body sends increasingly urgent signals — a hollow ache, a gnawing emptiness that grows impossible to ignore.",
+      "It sharpens focus while clouding judgment, making simple decisions feel monumentally important.",
+      "The stomach growls and contracts, demanding to be filled with whatever sustenance can quiet its insistent call."
+    ],
+    "close": [
+      "hungry",
+      "starving",
+      "appetite",
+      "craving",
+      "famished"
+    ],
+    "id": 47
+  },
+  {
     "answer": "thirst",
     "difficulty": "EASY",
     "sentences": [

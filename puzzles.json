@@ -1,5 +1,24 @@
 [
   {
+    "answer": "catharsis",
+    "difficulty": "HARD",
+    "sentences": [
+      "Ancient Greeks believed certain experiences could purify the soul through intense emotional release.",
+      "It transforms suffering into something meaningful, like pressure creating diamonds from carbon.",
+      "Audiences seek it in theaters and concert halls, though they may not realize what they're searching for.",
+      "Therapists know that breakthrough moments often arrive through tears, not insights.",
+      "Aristotle coined the term to describe how tragedy cleanses viewers by evoking pity and fear."
+    ],
+    "close": [
+      "cathartic",
+      "purification",
+      "release",
+      "cleansing",
+      "purgation"
+    ],
+    "id": 50
+  },
+  {
     "answer": "intuition",
     "difficulty": "MEDIUM",
     "sentences": [

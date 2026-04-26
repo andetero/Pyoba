@@ -1,5 +1,24 @@
 [
   {
+    "answer": "acoustics",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "Ancient Greek theaters carved into hillsides understood its principles millennia before scientists had names for the invisible forces at work.",
+      "It governs why whispers carry across cathedral domes, why concert halls spend decades in design, and why some rooms make even beautiful voices sound hollow.",
+      "The study encompasses reflection, absorption, and the way air itself becomes a medium for traveling waves of compression and rarefaction.",
+      "Modern architects employ specialists in this field to ensure that every seat in an auditorium receives sound with equal clarity and richness.",
+      "From the Latin meaning 'relating to hearing,' it describes both the science of sound behavior and the sonic properties of physical spaces."
+    ],
+    "close": [
+      "acoustic",
+      "acoustical",
+      "sound",
+      "resonance",
+      "audio"
+    ],
+    "id": 52
+  },
+  {
     "answer": "entropy",
     "difficulty": "HARD",
     "sentences": [

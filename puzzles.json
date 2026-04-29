@@ -1,5 +1,24 @@
 [
   {
+    "answer": "frustration",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It emerges from the collision between intention and reality, a friction that exists only in minds capable of imagining different outcomes.",
+      "Artists know it intimately — the gap between vision and execution that drives both creation and despair.",
+      "Children experience it most purely, lacking the emotional vocabulary to name what burns when their small hands cannot accomplish what their minds can see.",
+      "It builds like pressure in a closed system, sometimes dissipating through sighs and sometimes exploding into action or rage.",
+      "The feeling arrives whenever our will meets an immovable obstacle, whether that barrier exists in the world or within ourselves."
+    ],
+    "close": [
+      "frustrating",
+      "frustrated",
+      "frustrate",
+      "exasperation",
+      "irritation"
+    ],
+    "id": 55
+  },
+  {
     "answer": "loneliness",
     "difficulty": "EASY",
     "sentences": [

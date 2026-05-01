@@ -1,5 +1,24 @@
 [
   {
+    "answer": "paradox",
+    "difficulty": "HARD",
+    "sentences": [
+      "It emerges when truth doubles back on itself, creating a peculiar architecture where all exits lead back to the entrance.",
+      "Ancient philosophers stumbled upon it while contemplating the nature of motion, infinity, and the relationship between parts and wholes.",
+      "Logic recoils from it, yet it appears everywhere — in quantum mechanics, in human behavior, in the simplest statements about truth and falsehood.",
+      "The harder one tries to resolve it through reason, the more it reveals the limitations of binary thinking.",
+      "This contradiction that cannot be dismissed lives at the heart of many profound questions, suggesting that some truths can only be held in tension."
+    ],
+    "close": [
+      "contradiction",
+      "paradoxical",
+      "paradoxes",
+      "conundrum",
+      "antinomy"
+    ],
+    "id": 57
+  },
+  {
     "answer": "improvisation",
     "difficulty": "MEDIUM",
     "sentences": [

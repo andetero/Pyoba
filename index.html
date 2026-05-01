@@ -31,7 +31,7 @@
     }
 
     .wrap {
-      max-width: 640px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 24px;
       width: 100%;
@@ -72,25 +72,31 @@
       margin-bottom: 20px;
     }
 
+    #app-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
     .app-card {
       display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 24px;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px;
       background: #1a1814;
       border-radius: 12px;
       border: 1px solid var(--faint);
-      margin-bottom: 16px;
+      margin-bottom: 0;
       transition: border-color 0.15s;
     }
 
     .app-card:hover { border-color: var(--gold); }
 
     .app-icon {
-      width: 64px;
-      height: 64px;
-      min-width: 64px;
-      border-radius: 14px;
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      border-radius: 13px;
       background: #0e0c0a;
       display: flex;
       align-items: center;
@@ -99,9 +105,9 @@
     }
 
     .app-icon img {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
+      width: 56px;
+      height: 56px;
+      border-radius: 13px;
       display: block;
     }
 
@@ -113,7 +119,7 @@
       border-radius: 4px;
     }
 
-    .app-card.loading .app-icon { border-radius: 14px; }
+    .app-card.loading .app-icon { border-radius: 13px; }
 
     .skel-name  { height: 20px; width: 140px; margin-bottom: 10px; }
     .skel-desc1 { height: 10px; width: 100%; margin-bottom: 6px; }
@@ -129,16 +135,16 @@
 
     .app-name {
       font-family: var(--serif);
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
       color: var(--ink);
       margin-bottom: 4px;
     }
 
     .app-desc {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--mid);
-      line-height: 1.6;
+      line-height: 1.5;
       margin-bottom: 10px;
     }
 
@@ -188,6 +194,30 @@
 
     footer a { color: var(--mid); text-decoration: none; }
     footer a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) {
+      .wrap { max-width: 640px; }
+
+      #app-list {
+        grid-template-columns: 1fr;
+      }
+
+      .app-card {
+        gap: 20px;
+        padding: 24px;
+      }
+
+      .app-icon,
+      .app-icon img {
+        width: 64px;
+        height: 64px;
+      }
+
+      .app-icon { min-width: 64px; }
+
+      .app-name { font-size: 20px; }
+      .app-desc { font-size: 12px; line-height: 1.6; }
+    }
   </style>
 </head>
 <body>
@@ -221,7 +251,7 @@
       return normalized.slice(0, maxLength).replace(/\s\S*$/, '') + '…';
     }
 
-    function renderSkeletons(count = 6) {
+    function renderSkeletons(count = 8) {
       list.innerHTML = '';
       for (let i = 0; i < count; i += 1) {
         const card = document.createElement('div');

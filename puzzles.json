@@ -1,5 +1,24 @@
 [
   {
+    "answer": "vertigo",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "It exists in the liminal space between earth and sky, where certainty dissolves into the mathematics of distance.",
+      "Hitchcock understood its psychological architecture — how the body's compass can betray the mind's equilibrium.",
+      "The inner ear, that ancient navigator, sends conflicting signals when height overwhelms its evolutionary programming.",
+      "Acrophobes know it intimately, but it can ambush anyone at the edge of a canyon or atop a cathedral spire.",
+      "The spinning sensation arrives not from motion but from stillness — standing perfectly still while the world seems to tilt away beneath you."
+    ],
+    "close": [
+      "dizziness",
+      "spinning",
+      "disorientation",
+      "vertiginous",
+      "acrophobia"
+    ],
+    "id": 59
+  },
+  {
     "answer": "vindication",
     "difficulty": "HARD",
     "sentences": [

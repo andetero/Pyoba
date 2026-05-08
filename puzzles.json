@@ -1,5 +1,24 @@
 [
   {
+    "answer": "inertia",
+    "difficulty": "HARD",
+    "sentences": [
+      "It governs empires and electrons with equal indifference, a fundamental reluctance that shapes the architecture of existence.",
+      "Newton codified its principles, but poets had long recognized its presence in the human condition.",
+      "A body at rest demonstrates it as clearly as a body in motion, though we tend to notice only the former.",
+      "Habits are its psychological manifestation — the mind's tendency to maintain whatever state it currently occupies.",
+      "This resistance to change requires force to overcome, whether applied to objects or to the patterns of our lives."
+    ],
+    "close": [
+      "momentum",
+      "stagnation",
+      "resistance",
+      "lethargy",
+      "immobility"
+    ],
+    "id": 64
+  },
+  {
     "answer": "inspiration",
     "difficulty": "MEDIUM",
     "sentences": [

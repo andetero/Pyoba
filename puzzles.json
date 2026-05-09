@@ -1,5 +1,24 @@
 [
   {
+    "answer": "reciprocity",
+    "difficulty": "HARD",
+    "sentences": [
+      "It operates as an invisible architecture underlying human civilization, governing exchanges that span from molecules to nations.",
+      "Anthropologists consider it among the first social contracts, predating language and appearing across every known culture without exception.",
+      "When violated, it creates a particular kind of moral dissonance that can dissolve relationships and topple governments.",
+      "It transforms gifts into obligations, favors into debts, and kindness into expectation.",
+      "The principle demands that what flows in one direction must eventually flow back, creating the eternal dance of give and take."
+    ],
+    "close": [
+      "reciprocal",
+      "reciprocate",
+      "reciprocating",
+      "mutuality",
+      "exchange"
+    ],
+    "id": 65
+  },
+  {
     "answer": "inertia",
     "difficulty": "HARD",
     "sentences": [

@@ -1,5 +1,24 @@
 [
   {
+    "answer": "friction",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "Without it, the universe would be a place of eternal, uncontrolled motion where nothing could ever truly connect.",
+      "Ancient Greek philosophers debated whether it was a fundamental property of matter or merely an illusion created by invisible roughness.",
+      "Engineers spend careers learning to minimize it in some places while maximizing it in others, understanding that civilization depends on this balance.",
+      "Your fingers rely on it to turn these pages, your feet to move you forward, your vocal cords to shape the words you speak.",
+      "It transforms kinetic energy into heat through the resistance that occurs when two surfaces slide against each other."
+    ],
+    "close": [
+      "resistance",
+      "drag",
+      "traction",
+      "abrasion",
+      "rubbing"
+    ],
+    "id": 66
+  },
+  {
     "answer": "reciprocity",
     "difficulty": "HARD",
     "sentences": [

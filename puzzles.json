@@ -1,5 +1,24 @@
 [
   {
+    "answer": "balance",
+    "difficulty": "EASY",
+    "sentences": [
+      "It is the invisible force that keeps dancers graceful and buildings standing, yet most notice it only in its absence.",
+      "Ancient philosophers considered it the highest virtue, the golden mean between opposing extremes.",
+      "Every step you take requires your brain to make thousands of tiny calculations to maintain it.",
+      "Gymnasts spend years perfecting it on narrow beams, while tightrope walkers stake their lives on it.",
+      "When you stand on one foot or ride a bicycle, you are actively working against gravity to preserve this delicate state of equilibrium."
+    ],
+    "close": [
+      "equilibrium",
+      "stability",
+      "poise",
+      "balanced",
+      "balancing"
+    ],
+    "id": 67
+  },
+  {
     "answer": "friction",
     "difficulty": "WILDCARD",
     "sentences": [

@@ -1,5 +1,24 @@
 [
   {
+    "answer": "happiness",
+    "difficulty": "EASY",
+    "sentences": [
+      "Philosophers debate whether it is a fleeting emotion or a deeper state of being, though everyone recognizes it when it arrives.",
+      "Scientists study the chemicals that create it — dopamine, serotonin, endorphins — but the experience itself remains mysteriously more than the sum of its parts.",
+      "Children seem to find it easily in simple things, while adults often spend lifetimes searching for what once came naturally.",
+      "It can be contagious, spreading from person to person through laughter, smiles, and shared moments of joy.",
+      "The pursuit of it is written into America's founding documents, though it cannot be guaranteed, only chased."
+    ],
+    "close": [
+      "joy",
+      "contentment",
+      "bliss",
+      "happy",
+      "cheerfulness"
+    ],
+    "id": 68
+  },
+  {
     "answer": "balance",
     "difficulty": "EASY",
     "sentences": [

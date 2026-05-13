@@ -1,5 +1,24 @@
 [
   {
+    "answer": "guilt",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It arrives uninvited, a weight that settles in the chest long after the moment has passed.",
+      "Children learn its particular ache early, when they first understand that actions have consequences beyond themselves.",
+      "It can persist for decades over words unspoken as easily as deeds committed, growing heavier with time rather than lighter.",
+      "Unlike shame, which whispers 'I am bad,' this feeling declares 'I have done bad,' preserving the self while condemning the action.",
+      "Therapists know it as the emotion that drives people to confession, apology, and the endless human need to make amends."
+    ],
+    "close": [
+      "guilty",
+      "remorse",
+      "regret",
+      "shame",
+      "conscience"
+    ],
+    "id": 69
+  },
+  {
     "answer": "happiness",
     "difficulty": "EASY",
     "sentences": [

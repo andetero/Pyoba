@@ -1,5 +1,24 @@
 [
   {
+    "answer": "deception",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It exists in the space between what is and what appears to be, thriving in the theater of human interaction.",
+      "Children learn it naturally around age four, when they first understand that others can hold false beliefs.",
+      "It can be as simple as a smile that masks pain or as elaborate as a years-long fabrication that reshapes entire lives.",
+      "The practice ranges from the white lies that smooth social friction to the calculated untruths that destroy trust.",
+      "It requires the deliberate creation of a false impression, whether through words left unsaid or stories carefully constructed."
+    ],
+    "close": [
+      "deceive",
+      "deceiving",
+      "deceived",
+      "deceptive",
+      "deceit"
+    ],
+    "id": 70
+  },
+  {
     "answer": "guilt",
     "difficulty": "MEDIUM",
     "sentences": [

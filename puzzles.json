@@ -1,5 +1,24 @@
 [
   {
+    "answer": "melancholia",
+    "difficulty": "HARD",
+    "sentences": [
+      "It arrives like a fog that settles not over landscapes but over the architecture of thought itself.",
+      "Medieval physicians believed it stemmed from an excess of black bile, one of the four humors that governed human temperament.",
+      "Artists and writers have long claimed it as both curse and muse, finding in its depths a peculiar clarity about the world's fundamental sorrows.",
+      "Unlike its clinical cousin, this condition carries with it a strange beauty, a philosophical weight that transforms suffering into contemplation.",
+      "Dürer depicted it as a winged figure surrounded by the tools of creation, suggesting that this particular darkness might be the price of seeing too clearly."
+    ],
+    "close": [
+      "melancholic",
+      "melancholy",
+      "depression",
+      "despondency",
+      "gloom"
+    ],
+    "id": 71
+  },
+  {
     "answer": "deception",
     "difficulty": "MEDIUM",
     "sentences": [

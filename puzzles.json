@@ -1,5 +1,24 @@
 [
   {
+    "answer": "schadenfreude",
+    "difficulty": "HARD",
+    "sentences": [
+      "It blooms in the shadows of human nature, feeding on outcomes we would never openly wish for.",
+      "Ancient moralists warned against this emotion, yet modern psychology suggests it may serve evolutionary purposes in social hierarchies.",
+      "It arrives uninvited when witnessing another's downfall, particularly someone previously envied or disliked.",
+      "The feeling carries its own guilt — pleasure derived from pain creates an uncomfortable moral tension within the observer.",
+      "German speakers gave the phenomenon its most precise name, combining the words for 'harm' and 'joy' into a single concept that English borrowed wholesale."
+    ],
+    "close": [
+      "malice",
+      "spite",
+      "vindictiveness",
+      "satisfaction",
+      "gloating"
+    ],
+    "id": 72
+  },
+  {
     "answer": "melancholia",
     "difficulty": "HARD",
     "sentences": [

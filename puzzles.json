@@ -1,5 +1,24 @@
 [
   {
+    "answer": "turbulence",
+    "difficulty": "WILDCARD",
+    "sentences": [
+      "It transforms the orderly into chaos, yet follows laws so complex that predicting its behavior remains one of science's greatest unsolved problems.",
+      "Leonardo da Vinci filled pages with drawings of its patterns in water, recognizing beauty in what others saw as mere disorder.",
+      "In fluids, it begins when smooth flow breaks down, creating eddies and swirls that feed energy back into themselves.",
+      "Pilots know it as the invisible force that can turn a peaceful flight into a white-knuckle experience, shaking tons of metal as if they were toys.",
+      "The word describes any violent or unsteady movement of air or water, from the wake behind a moving boat to the bumpy patches that make passengers grip their armrests."
+    ],
+    "close": [
+      "turbulent",
+      "turbulently",
+      "chaos",
+      "disturbance",
+      "agitation"
+    ],
+    "id": 73
+  },
+  {
     "answer": "schadenfreude",
     "difficulty": "HARD",
     "sentences": [

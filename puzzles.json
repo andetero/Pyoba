@@ -1,5 +1,24 @@
 [
   {
+    "answer": "confusion",
+    "difficulty": "EASY",
+    "sentences": [
+      "It arrives like fog rolling in, turning familiar landscapes into foreign territory.",
+      "The mind reaches for solid ground but finds only shifting sand beneath its feet.",
+      "Students know it well during final exams, when too much information becomes no information at all.",
+      "It's the opposite of clarity, making simple decisions feel impossibly complex.",
+      "The furrowed brow and bewildered expression are its universal calling cards."
+    ],
+    "close": [
+      "confuse",
+      "confused",
+      "confusing",
+      "bewilderment",
+      "perplexity"
+    ],
+    "id": 74
+  },
+  {
     "answer": "turbulence",
     "difficulty": "WILDCARD",
     "sentences": [

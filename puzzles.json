@@ -1,5 +1,24 @@
 [
   {
+    "answer": "courage",
+    "difficulty": "EASY",
+    "sentences": [
+      "It emerges not in the absence of fear, but in the moment when fear meets something stronger.",
+      "Philosophers distinguish between the physical kind that faces bodily harm and the moral kind that confronts social disapproval.",
+      "Children display it naturally when learning to walk, falling and rising without hesitation or shame.",
+      "It can be as quiet as speaking truth to a friend or as loud as running into a burning building.",
+      "Heroes in every culture are celebrated for possessing this quality that transforms ordinary people into legends."
+    ],
+    "close": [
+      "bravery",
+      "valor",
+      "fearlessness",
+      "courageous",
+      "brave"
+    ],
+    "id": 75
+  },
+  {
     "answer": "confusion",
     "difficulty": "EASY",
     "sentences": [

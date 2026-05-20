@@ -1,5 +1,24 @@
 [
   {
+    "answer": "sympathy",
+    "difficulty": "MEDIUM",
+    "sentences": [
+      "It bridges the impossible gap between one consciousness and another, creating connection where none should exist.",
+      "Ancient Greeks believed it flowed through invisible threads that connected all living beings, making shared experience possible.",
+      "Children display it naturally before they learn the social rules that complicate adult relationships.",
+      "It differs from its deeper cousin in that it observes suffering from the outside rather than stepping fully into another's shoes.",
+      "The word literally means 'feeling together' — the capacity to be moved by another person's pain or joy without having lived it yourself."
+    ],
+    "close": [
+      "sympathetic",
+      "sympathize",
+      "sympathizing",
+      "empathy",
+      "compassion"
+    ],
+    "id": 76
+  },
+  {
     "answer": "courage",
     "difficulty": "EASY",
     "sentences": [

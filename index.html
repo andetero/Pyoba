@@ -335,16 +335,20 @@
 
     renderSkeletons();
 
+    function loadJson(path, allowMissing = false) {
+      return fetch(path, { cache: 'no-store' }).then(response => {
+        if (allowMissing && response.status === 404) return null;
+        if (!response.ok) throw new Error(`${path} HTTP ${response.status}`);
+        return response.json();
+      });
+    }
+
     Promise.all([
-      fetch('/apps.json', { cache: 'no-store' }).then(response => {
-        if (!response.ok) throw new Error(`apps.json HTTP ${response.status}`);
-        return response.json();
+      loadJson('/apple_apps.json').then(data => {
+        const hasAppleResults = Array.isArray(data?.results) && data.results.length > 0;
+        return hasAppleResults ? data : loadJson('/apps.json', true);
       }),
-      fetch('/android_apps.json', { cache: 'no-store' }).then(response => {
-        if (response.status === 404) return { apps: [] };
-        if (!response.ok) throw new Error(`android_apps.json HTTP ${response.status}`);
-        return response.json();
-      })
+      loadJson('/android_apps.json', true)
     ])
       .then(([appleData, androidData]) => {
         const appleApps = Array.isArray(appleData?.results) ? appleData.results.map(normalizeAppleApp) : [];

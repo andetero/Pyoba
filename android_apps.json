@@ -1,11 +1,8 @@
 {
   "apps": [
     {
-      "platform": "android",
+      "appleTrackId": 6766436172,
       "id": "com.pyoba.horsemotel",
-      "name": "HorseMotel",
-      "description": "Find horse-friendly overnight stops, layover options, and lodging while traveling with horses.",
-      "iconUrl": "",
       "storeUrl": "https://play.google.com/store/apps/details?id=com.pyoba.horsemotel"
     }
   ]

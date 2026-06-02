@@ -278,23 +278,36 @@
         name: app.trackName || '',
         description: app.description || '',
         iconUrl: app.artworkUrl100 || '',
-        storeUrl: app.trackViewUrl || `https://apps.apple.com/us/app/id${id}`,
-        storeLabel: 'App Store',
-        storeIcon: APPLE_SVG
+        links: [
+          {
+            url: app.trackViewUrl || `https://apps.apple.com/us/app/id${id}`,
+            label: 'App Store',
+            icon: APPLE_SVG
+          }
+        ]
       };
     }
 
-    function normalizeAndroidApp(app) {
-      return {
-        platform: 'android',
-        id: app.id || '',
-        name: app.name || '',
-        description: app.description || '',
-        iconUrl: app.iconUrl || '',
-        storeUrl: app.storeUrl || `https://play.google.com/store/apps/details?id=${app.id || ''}`,
-        storeLabel: 'Google Play',
-        storeIcon: PLAY_SVG
-      };
+    function applyAndroidLinks(appleApps, androidData) {
+      const androidLinks = Array.isArray(androidData?.apps) ? androidData.apps : [];
+
+      androidLinks.forEach(androidApp => {
+        const appleTrackId = androidApp.appleTrackId ? String(androidApp.appleTrackId) : '';
+        const matchName = (androidApp.matchName || '').toLowerCase();
+        const app = appleApps.find(candidate => {
+          return candidate.id === appleTrackId || (matchName && candidate.name.toLowerCase() === matchName);
+        });
+
+        if (!app) return;
+
+        app.links.push({
+          url: androidApp.storeUrl || `https://play.google.com/store/apps/details?id=${androidApp.id || ''}`,
+          label: 'Google Play',
+          icon: PLAY_SVG
+        });
+      });
+
+      return appleApps;
     }
 
     function renderApps(results) {
@@ -311,7 +324,10 @@
         const name = app.name || '';
         const desc = truncateAtWord(app.description || '', 160);
         const iconUrl = app.iconUrl || '';
-        const storeUrl = app.storeUrl || '#';
+        const links = Array.isArray(app.links) ? app.links : [];
+        const linkHtml = links.map(link => `
+          <a href="${link.url}" class="app-link" target="_blank" rel="noopener noreferrer">${link.icon} ${link.label}</a>
+        `).join('');
 
         const card = document.createElement('div');
         card.className = 'app-card';
@@ -323,9 +339,7 @@
           <div class="app-info">
             <div class="app-name">${name}</div>
             <div class="app-desc">${desc}</div>
-            <div class="app-links">
-              <a href="${storeUrl}" class="app-link" target="_blank" rel="noopener noreferrer">${app.storeIcon} ${app.storeLabel}</a>
-            </div>
+            <div class="app-links">${linkHtml}</div>
           </div>
         `;
 
@@ -352,8 +366,7 @@
     ])
       .then(([appleData, androidData]) => {
         const appleApps = Array.isArray(appleData?.results) ? appleData.results.map(normalizeAppleApp) : [];
-        const androidApps = Array.isArray(androidData?.apps) ? androidData.apps.map(normalizeAndroidApp) : [];
-        renderApps([...appleApps, ...androidApps]);
+        renderApps(applyAndroidLinks(appleApps, androidData));
       })
       .catch(error => {
         console.error('Failed to load app data:', error);

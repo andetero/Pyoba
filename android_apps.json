@@ -2,6 +2,7 @@
   "apps": [
     {
       "appleTrackId": 6766436172,
+      "matchName": "HorseMotel.com",
       "id": "com.pyoba.horsemotel",
       "storeUrl": "https://play.google.com/store/apps/details?id=com.pyoba.horsemotel"
     }

@@ -13,15 +13,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Fetch iTunes data
+      - name: Fetch Apple app data
         run: |
           curl -s "https://itunes.apple.com/lookup?id=6760603110,6760981351,6761038219,6761126977,6761673183,6761800197,6761319280,6766436172" \
-            -o apps.json
+            -o apple_apps.json
 
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add apps.json
-          git diff --staged --quiet || git commit -m "chore: refresh app data"
+          git add apple_apps.json
+          git diff --staged --quiet || git commit -m "chore: refresh Apple app data"
           git push

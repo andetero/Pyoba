@@ -5,6 +5,12 @@
       "matchName": "HorseMotel.com",
       "id": "com.pyoba.horsemotel",
       "storeUrl": "https://play.google.com/store/apps/details?id=com.pyoba.horsemotel"
+    },
+    {
+      "appleTrackId": 6761319280,
+      "matchName": "HorseCamp",
+      "id": "com.pyoba.HorseCamp",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.pyoba.HorseCamp"
     }
   ]
 }

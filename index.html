@@ -230,6 +230,7 @@
   <script>
     const APPLE_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`;
     const PLAY_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.6 2.2c-.36.22-.6.64-.6 1.18v17.24c0 .54.24.96.6 1.18L13.7 12 3.6 2.2zm11.2 8.72 2.54-2.46L5.27 1.55l9.53 9.37zm0 2.16-9.53 9.37 12.07-6.91-2.54-2.46zm1.15-1.08 3.42-3.32c.76.43 1.23 1.02 1.23 1.66v3.32c0 .64-.47 1.23-1.23 1.66L15.95 12z"/></svg>`;
+    const HIDDEN_APP_NAMES = new Set(['tremula']);
 
     const list = document.getElementById('app-list');
     const status = document.getElementById('status');
@@ -257,6 +258,11 @@
         `;
         list.appendChild(card);
       }
+    }
+
+    function isVisibleAppleApp(app) {
+      const name = (app.trackName || '').trim().toLowerCase();
+      return !HIDDEN_APP_NAMES.has(name);
     }
 
     function normalizeAppleApp(app) {
@@ -354,7 +360,7 @@
       loadJson('/android_apps.json', true)
     ])
       .then(([appleData, androidData]) => {
-        const appleApps = Array.isArray(appleData?.results) ? appleData.results.map(normalizeAppleApp) : [];
+        const appleApps = Array.isArray(appleData?.results) ? appleData.results.filter(isVisibleAppleApp).map(normalizeAppleApp) : [];
         renderApps(applyAndroidLinks(appleApps, androidData));
       })
       .catch(error => {

@@ -230,6 +230,7 @@
   <script>
     const APPLE_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`;
     const PLAY_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.6 2.2c-.36.22-.6.64-.6 1.18v17.24c0 .54.24.96.6 1.18L13.7 12 3.6 2.2zm11.2 8.72 2.54-2.46L5.27 1.55l9.53 9.37zm0 2.16-9.53 9.37 12.07-6.91-2.54-2.46zm1.15-1.08 3.42-3.32c.76.43 1.23 1.02 1.23 1.66v3.32c0 .64-.47 1.23-1.23 1.66L15.95 12z"/></svg>`;
+    const WEB_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-3.18a15.6 15.6 0 0 0-1.15-3.07A8.05 8.05 0 0 1 18.93 8ZM12 4.04c.83 1.2 1.48 2.53 1.86 3.96h-3.72A13.7 13.7 0 0 1 12 4.04ZM4.26 14a8.4 8.4 0 0 1 0-4h3.6a16.7 16.7 0 0 0 0 4h-3.6Zm.81 2h3.18c.28 1.09.67 2.13 1.15 3.07A8.05 8.05 0 0 1 5.07 16Zm3.18-8H5.07A8.05 8.05 0 0 1 9.4 4.93 15.6 15.6 0 0 0 8.25 8ZM12 19.96A13.7 13.7 0 0 1 10.14 16h3.72A13.7 13.7 0 0 1 12 19.96ZM14.29 14H9.71a14.6 14.6 0 0 1 0-4h4.58a14.6 14.6 0 0 1 0 4Zm.31 5.07c.48-.94.87-1.98 1.15-3.07h3.18a8.05 8.05 0 0 1-4.33 3.07ZM16.14 14a16.7 16.7 0 0 0 0-4h3.6a8.4 8.4 0 0 1 0 4h-3.6Z"/></svg>`;
     const HIDDEN_APP_NAMES = new Set(['tremula']);
 
     const list = document.getElementById('app-list');
@@ -283,22 +284,43 @@
       };
     }
 
+    function findMatchingApp(appleApps, linkedApp) {
+      const appleTrackId = linkedApp.appleTrackId ? String(linkedApp.appleTrackId) : '';
+      const matchName = (linkedApp.matchName || '').toLowerCase();
+
+      return appleApps.find(candidate => {
+        return candidate.id === appleTrackId || (matchName && candidate.name.toLowerCase() === matchName);
+      });
+    }
+
     function applyAndroidLinks(appleApps, androidData) {
       const androidLinks = Array.isArray(androidData?.apps) ? androidData.apps : [];
 
       androidLinks.forEach(androidApp => {
-        const appleTrackId = androidApp.appleTrackId ? String(androidApp.appleTrackId) : '';
-        const matchName = (androidApp.matchName || '').toLowerCase();
-        const app = appleApps.find(candidate => {
-          return candidate.id === appleTrackId || (matchName && candidate.name.toLowerCase() === matchName);
-        });
-
+        const app = findMatchingApp(appleApps, androidApp);
         if (!app) return;
 
         app.links.push({
           url: androidApp.storeUrl || `https://play.google.com/store/apps/details?id=${androidApp.id || ''}`,
           label: 'Google Play',
           icon: PLAY_SVG
+        });
+      });
+
+      return appleApps;
+    }
+
+    function applyWebLinks(appleApps, webData) {
+      const webLinks = Array.isArray(webData?.apps) ? webData.apps : [];
+
+      webLinks.forEach(webApp => {
+        const app = findMatchingApp(appleApps, webApp);
+        if (!app) return;
+
+        app.links.push({
+          url: webApp.url || '#',
+          label: webApp.label || 'Web App',
+          icon: WEB_SVG
         });
       });
 
@@ -357,11 +379,12 @@
         const hasAppleResults = Array.isArray(data?.results) && data.results.length > 0;
         return hasAppleResults ? data : loadJson('/apps.json', true);
       }),
-      loadJson('/android_apps.json', true)
+      loadJson('/android_apps.json', true),
+      loadJson('/web_apps.json', true)
     ])
-      .then(([appleData, androidData]) => {
+      .then(([appleData, androidData, webData]) => {
         const appleApps = Array.isArray(appleData?.results) ? appleData.results.filter(isVisibleAppleApp).map(normalizeAppleApp) : [];
-        renderApps(applyAndroidLinks(appleApps, androidData));
+        renderApps(applyWebLinks(applyAndroidLinks(appleApps, androidData), webData));
       })
       .catch(error => {
         console.error('Failed to load app data:', error);

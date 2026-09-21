@@ -1,6 +1,12 @@
 {
   "apps": [
     {
+      "appleTrackId": 6760603110,
+      "matchName": "GIST: Daily Word Puzzle",
+      "id": "com.pyoba.GIST",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.pyoba.GIST"
+    },
+    {
       "appleTrackId": 6766436172,
       "matchName": "HorseMotel.com",
       "id": "com.pyoba.horsemotel",

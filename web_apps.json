@@ -3,8 +3,34 @@
     {
       "appleTrackId": 6760603110,
       "matchName": "GIST: Daily Word Puzzle",
+      "siteUrl": "https://gist.pyoba.com",
       "url": "https://gist.pyoba.com",
       "label": "Web App"
+    },
+    {
+      "appleTrackId": 6760981351,
+      "matchName": "NetSleuth",
+      "siteUrl": "https://netsleuth.pyoba.com"
+    },
+    {
+      "appleTrackId": 6761126977,
+      "matchName": "Daily Brain Games",
+      "siteUrl": "https://dailybraingames.pyoba.com"
+    },
+    {
+      "appleTrackId": 6761673183,
+      "matchName": "ContactFixer",
+      "siteUrl": "https://contactfixer.pyoba.com"
+    },
+    {
+      "appleTrackId": 6761319280,
+      "matchName": "HorseCamp",
+      "siteUrl": "https://horsecamp.app"
+    },
+    {
+      "appleTrackId": 6766436172,
+      "matchName": "HorseMotel.com",
+      "siteUrl": "https://horsemotel.com"
     }
   ]
 }

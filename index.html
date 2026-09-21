@@ -5,20 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pyoba</title>
   <meta name="description" content="Simple, thoughtful apps">
-  <meta name="theme-color" content="#0e0c0a">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0c0a" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0e0c0a;
-      --ink: #e8e4dc;
-      --mid: #7a7060;
-      --faint: #2a2520;
+      color-scheme: light dark;
+      --bg: #f7f4ee;
+      --ink: #1a1814;
+      --mid: #8a8070;
+      --faint: #e2ddd4;
       --gold: #b8860b;
+      --card: #fffdf8;
+      --icon-bg: #f0ece4;
+      --skeleton-a: #eee9e0;
+      --skeleton-b: #e2ddd4;
       --serif: 'Playfair Display', Georgia, serif;
       --mono: 'DM Mono', monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e0c0a;
+        --ink: #e8e4dc;
+        --mid: #7a7060;
+        --faint: #2a2520;
+        --gold: #b8860b;
+        --card: #1a1814;
+        --icon-bg: #0e0c0a;
+        --skeleton-a: #1e1c18;
+        --skeleton-b: #2a2520;
+      }
     }
 
     body {
@@ -74,7 +95,7 @@
       align-items: flex-start;
       gap: 18px;
       padding: 22px;
-      background: #1a1814;
+      background: var(--card);
       border-radius: 12px;
       border: 1px solid var(--faint);
       margin-bottom: 0;
@@ -98,7 +119,7 @@
       height: 56px;
       min-width: 56px;
       border-radius: 13px;
-      background: #0e0c0a;
+      background: var(--icon-bg);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -114,7 +135,7 @@
 
     .app-card.loading .app-icon,
     .app-card.loading .skel {
-      background: linear-gradient(90deg, #1e1c18 25%, #2a2520 50%, #1e1c18 75%);
+      background: linear-gradient(90deg, var(--skeleton-a) 25%, var(--skeleton-b) 50%, var(--skeleton-a) 75%);
       background-size: 200% 100%;
       animation: shimmer 1.4s infinite;
       border-radius: 4px;

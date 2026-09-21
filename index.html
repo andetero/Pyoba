@@ -78,10 +78,20 @@
       border-radius: 12px;
       border: 1px solid var(--faint);
       margin-bottom: 0;
-      transition: border-color 0.15s;
+      transition: border-color 0.15s, transform 0.15s;
     }
 
-    .app-card:hover { border-color: var(--gold); }
+    .app-card[data-website] { cursor: pointer; }
+
+    .app-card[data-website]:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .app-card[data-website]:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
 
     .app-icon {
       width: 56px;
@@ -274,6 +284,7 @@
         name: app.trackName || '',
         description: app.description || '',
         iconUrl: app.artworkUrl100 || '',
+        websiteUrl: '',
         links: [
           {
             url: app.trackViewUrl || `https://apps.apple.com/us/app/id${id}`,
@@ -317,11 +328,15 @@
         const app = findMatchingApp(appleApps, webApp);
         if (!app) return;
 
-        app.links.push({
-          url: webApp.url || '#',
-          label: webApp.label || 'Web App',
-          icon: WEB_SVG
-        });
+        if (webApp.siteUrl) app.websiteUrl = webApp.siteUrl;
+
+        if (webApp.url) {
+          app.links.push({
+            url: webApp.url,
+            label: webApp.label || 'Web App',
+            icon: WEB_SVG
+          });
+        }
       });
 
       return appleApps;
@@ -348,6 +363,25 @@
 
         const card = document.createElement('div');
         card.className = 'app-card';
+
+        if (app.websiteUrl) {
+          card.dataset.website = app.websiteUrl;
+          card.tabIndex = 0;
+          card.setAttribute('role', 'link');
+          card.setAttribute('aria-label', `Open ${name} website`);
+
+          card.addEventListener('click', event => {
+            if (event.target.closest('a')) return;
+            window.location.href = app.websiteUrl;
+          });
+
+          card.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              window.location.href = app.websiteUrl;
+            }
+          });
+        }
 
         card.innerHTML = `
           <div class="app-icon">

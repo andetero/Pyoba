@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for Pyoba LLC.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0c0a" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f4ee;
+      --ink: #1a1814;
+      --mid: #6b6253;
+      --faint: #e2ddd4;
+      --gold: #8a6408;
+      --card: #fffdf8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e0c0a;
+        --ink: #e8e4dc;
+        --mid: #9a907f;
+        --faint: #2a2520;
+        --gold: #b8860b;
+        --card: #1a1814;
+      }
+    }
+    body { background: var(--bg); color: var(--ink); font-family: var(--mono); min-height: 100vh; display: flex; flex-direction: column; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; width: 100%; flex: 1; display: flex; flex-direction: column; }
+    header { padding: 48px 0 24px; }
+    .brand { font-size: 13px; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 16px; text-decoration: none; display: inline-block; }
+    .brand:hover, .brand:focus-visible { color: var(--ink); }
+    h1 { font-family: var(--serif); font-size: 36px; font-weight: 400; color: var(--ink); line-height: 1.2; }
+    .updated { margin-top: 12px; font-size: 12px; color: var(--mid); }
+    main { flex: 1; padding-bottom: 32px; }
+    h2 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--ink); margin: 32px 0 10px; line-height: 1.3; }
+    p, li { font-size: 14px; line-height: 1.75; color: var(--ink); }
+    p + p { margin-top: 12px; }
+    ul { margin: 8px 0 0 20px; }
+    li + li { margin-top: 6px; }
+    blockquote { margin: 12px 0; padding: 16px 18px; background: var(--card); border: 1px solid var(--faint); border-left: 3px solid var(--gold); border-radius: 8px; font-size: 14px; line-height: 1.7; color: var(--ink); }
+    main a { color: var(--gold); text-underline-offset: 3px; }
+    main a:hover { color: var(--ink); }
+    a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .back { display: inline-block; margin-top: 36px; font-size: 13px; }
+    footer { border-top: 1px solid var(--faint); padding: 16px 0 20px; font-size: 11px; color: var(--mid); letter-spacing: 0.1em; display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+    footer a { color: var(--mid); text-decoration: none; }
+    footer a:hover { color: var(--ink); text-decoration: underline; }
+    @media (max-width: 700px) {
+      header { padding-top: 36px; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/">PYOBA</a>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: October 19, 2026</p>
+    </header>
+    <main>
+      <p>This Privacy Policy explains how Pyoba LLC, a Colorado company (&ldquo;Pyoba,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;), collects and uses information.</p>
+
+      <h2>Information we collect</h2>
+      <ul>
+        <li>Names</li>
+        <li>Business names</li>
+        <li>Phone numbers</li>
+        <li>Email addresses</li>
+        <li>Messages you send us</li>
+      </ul>
+
+      <h2>How we use it</h2>
+      <p>We use this information to contact business owners about websites, to provide our website service, and to handle billing.</p>
+
+      <h2>Sharing</h2>
+      <p>We do not sell or share your SMS opt-in data or personal information with third parties for marketing purposes.</p>
+      <p>SMS consent is never shared with anyone.</p>
+
+      <h2>Text messages</h2>
+      <p>For details about our text messages, including how to opt out, see our <a href="/sms/">SMS Terms</a>.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy? Email <a href="mailto:support@pyoba.com">support@pyoba.com</a>.</p>
+
+      <a class="back" href="/">&larr; Back to home</a>
+    </main>
+    <footer>
+      <span>&copy; 2026 Pyoba LLC</span>
+      <nav aria-label="Legal">
+        <a href="/sms/">SMS Terms</a>
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms &amp; Conditions</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
